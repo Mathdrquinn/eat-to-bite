@@ -4,7 +4,11 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
+    "components",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
   ],
   "dependencies": {
     "angular": "1.2.15",
@@ -16,5 +20,12 @@
     "angular-sanitize": "1.2.15",
     "angular-route": "1.2.15",
     "bootstrap": "~3.1.1"
-  }
+  },
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "Brendan Quinn <quinn.197@gmail.com>"
+  ],
+  "license": "MIT"
 }

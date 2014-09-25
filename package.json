@@ -1,5 +1,5 @@
 {
-  "name": "Baby-MEAN",
+  "name": "eat-to-bite",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -17,5 +17,17 @@
     "grunt-develop": "~0.1.1",
     "grunt-contrib-watch": "~0.4.4",
     "request": "~2.22.0"
-  }
+  },
+  "description": "Nothing groundbreaking here!  This app is intended as a learning tool that consists of Angular, Node, MongoDB, and Express with CRUD.",
+  "main": "Gruntfile.js",
+  "keywords": [
+    "Charleston",
+    "Restaurant",
+    "Brendan",
+    "Quinn",
+    "TIY",
+    "eat-to-bite"
+  ],
+  "author": "Brendan Quinn <quinn.197@gmail.com>",
+  "license": "MIT"
 }
