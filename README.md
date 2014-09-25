@@ -61,9 +61,9 @@ Technologies
 
 
 ### Wireframes
-![Home](/readMeImages.Home.jpeg)
-![Profile](/readMEImage.Profile.jpeg)
-![Search](/readMEImage.Search.jpeg)
+![Home](/readMeImages.Home.jpg)
+![Profile](/readMEImage.Profile.jpg)
+![Search](/readMEImage.Search.jpg)
 
 
 ### Roadmap (additional features)
