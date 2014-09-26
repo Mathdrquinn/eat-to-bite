@@ -5,7 +5,8 @@
     "ngRoute",
     "ngCookies",
     "posts",
-    "profile"
+    "profile",
+    "menus"
     ])
     .config(function ($routeProvider) {
         $routeProvider
