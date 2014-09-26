@@ -21,8 +21,8 @@
         <span class="boxBottom"><a href="#/posts/{{newestPost._id}}">See this dish and others from {{newestPost.restaurant}} --></a></span>
     </article>
 </div>
-<div class="row">
-    <div ng-repeat="post in posts | limitTo : 3" class="oldLinks col-lg-4 col-md-4 col-sm-12">
+<div class="row ovrflw-y">
+    <div ng-repeat="post in posts" ng-if="$index>0" class="oldLinks col-lg-4 col-md-4 col-sm-12">
         <a href="#/posts/{{post._id}}">
             {{post.dishName}}
             by
