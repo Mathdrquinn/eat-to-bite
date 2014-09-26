@@ -326,6 +326,44 @@ h3 {
 /* ng-View Design
 ///////////////////// */
 
+body {
+  margin:0;
+  padding: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.container {
+  width: 100%;
+  margin:0;
+  padding: 0;
+}
+a {
+  color: #00B7FF;
+}
+
+
+.stretch {
+  display: block;
+  position: relative;
+  background-size:100%;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+.newestDescription {
+  display: inline-block;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  top:10px;
+  right: 10px;
+  padding: 8px;
+}
+
+
+.oldLinks {
+  text-align: center;
+}
+
+
 
 /* Responsive Design
 ///////////////////////////////////////////////////////////////// */

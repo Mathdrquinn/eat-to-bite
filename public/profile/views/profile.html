@@ -9,6 +9,8 @@ here!
     <p>{{person.email}}</p>
     <p>Preference: {{person.likes}}</p>
     <p>Distains: {{person.dislikes}}</p>
+    Dietary needs:
+    <br/>
     <span style="padding:5px; color:black" ng-show="person.diet.veagan">Veagan</span>
     <span style="padding:5px; color:grey" ng-show="person.diet.veggie">Vegetarian</span>
     <span style="padding:5px; color:darkgrey" ng-show="person.diet.pescatarian">Pescatarian</span>
@@ -18,8 +20,8 @@ here!
     <span style="padding:5px; color:black" ng-show="person.diet.highFructose">High Fructose Corn Syrup</span>
     <span style="padding:5px; color:grey" ng-show="person.diet.organic">Organic</span>
     <span style="padding:5px; color:darkgrey" ng-show="person.diet.gmo">GMO free</span>
-    <hr>
-    Contains:
+    <hr/>
+    Allergic to:
     <br>
     <span style="padding:5px; color:red" ng-show="person.allergens.nuts">Nuts</span>
     <span style="padding:5px; color:blue" ng-show="person.allergens.treeNuts">Tree Nuts</span>
@@ -30,6 +32,7 @@ here!
     <span style="padding:5px; color:blue" ng-show="person.allergens.fish">Fish</span>
     <span style="padding:5px; color:red" ng-show="person.allergens.shellFish">Shellfish</span>
     <span style="padding:5px; color:green" ng-show="person.allergens.soy">Soy</span>
+    <br/>
     <a href="#/createProfile"><button>Edit</button></a>
     <!--<button ng-click="printCookie()">Print</button>-->
 </div>
