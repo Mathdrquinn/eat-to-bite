@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+here!
+{{work}}
+{{word}}
+<a href="/">Home</a>
 
-</body>
-</html>
+<form action="" ng-submit="setProfile(profile)">
+    <input type="text" placeholder="First Name" ng-model="profile.firstName" required="true"/>
+    <input type="text" placeholder="Last Name" ng-model="profile.LastName" required="true"/>
+    <input type="text" placeholder="Email" required="true"/>
+    <label> DOB
+        <input type="date" ng-model="profile.dob"/>
+    </label>
+    <input type="text" placeholder="Image Url" ng-model="profile.avatar"/>
+    <label for="preferences"> Preferred Style
+        <select name="preference" id="preferences" ng-model="profile.likes">
+            <option ng-click="!american" value="American">American</option>
+            <option ng-click="!southern" value="Southern">Southern</option>
+            <option ng-click="!seafood" value="Seafood">Seafood</option>
+            <option ng-click="!baked" value="bakedGoods">Baked Goods</option>
+            <option ng-click="!cajuan" value="Cajuan">Cajuan</option>
+            <option ng-click="!chinese" value="Chinese">Chinese</option>
+            <option ng-click="!thai" value="Thai">Thai</option>
+        </select>
+    </label>
+    <label for="dislikes"> Aversions
+        <select name="dislikes" id="dislikes" ng-model="profile.dislikes">
+            <option ng-hide="american" value="American">American</option>
+            <option ng-hide="southern" value="Southern">Southern</option>
+            <option ng-hide="seafood" value="Seafood">Seafood</option>
+            <option ng-hide="baked" value="bakedGoods">Baked Goods</option>
+            <option ng-hide="cajuan" value="Cajuan">Cajuan</option>
+            <option ng-hide="chinese" value="Chinese">Chinese</option>
+            <option ng-hide="thai" value="Thai">Thai</option>
+        </select>
+    </label>
+    <lable> Allergies
+        <br/>
+        <input type="checkbox" name="nuts" id="nuts" data-ng-model="profile.allergens.nuts"/> Nuts
+        <input type="checkbox" name="treeNuts" id="treeNuts" data-ng-model="profile.allergens.treeNuts"/> Tree Nuts
+        <input type="checkbox" name="milk" id="milk" data-ng-model="profile.allergens.milk"/> Milk
+        <input type="checkbox" name="lactose" id="dairy" data-ng-model="profile.allergens.dairy"/> Dairy
+        <input type="checkbox" name="glucose" id="glucose" data-ng-model="profile.allergens.glucose"/> Wheat/Glucose
+        <input type="checkbox" name="eggs" id="eggs" data-ng-model="profile.allergens.eggs"/> Eggs
+        <input type="checkbox" name="fish" id="fish" data-ng-model="profile.allergens.fish"/> Fish
+        <input type="checkbox" name="shellfish" id="shellfish" data-ng-model="profile.allergens.shellfish"/> Shellfish
+        <input type="checkbox" name="soy" id="soy" data-ng-model="profile.allergens.soy"/> Soy
+    </lable>
+    <lable> Dietary Needs
+        <br/>
+        <input type="checkbox" name="veagan" id="veagan" data-ng-model="profile.diet.veagan"/> Veagan
+        <input type="checkbox" name="geggie" id="veggie" data-ng-model="profile.diet.veggie"/> Vegetarian
+        <input type="checkbox" name="pescatarian" id="pescatarian" data-ng-model="profile.diet.pescatarian"/> Pescatarian
+        <input type="checkbox" name="carbFre" id="carbFree" data-ng-model="profile.diet.carbFree"/> Carb Free
+        <input type="checkbox" name="carb" id="carb" data-ng-model="profile.diet.carb"/> Low Carb
+        <input type="checkbox" name="protein" id="protein" data-ng-model="profile.diet.protein"/> High Protein
+        <input type="checkbox" name="highFructose" id="highFructose" data-ng-model="profile.diet.highFructose"/> Contains High Fructose Corn Syrup
+        <input type="checkbox" name="organic" id="organic" data-ng-model="profile.diet.organic"/> Organic
+        <input type="checkbox" name="gmo" id="gmo" data-ng-model="profile.diet.gmo"/> Free of GMO's
+    </lable>
+    <button type="submit">Submit</button>
+</form>
