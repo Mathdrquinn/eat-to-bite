@@ -1,3 +1,37 @@
-<input type="text" data-ng-model="post.title">
-<textarea data-ng-model="post.content"></textarea>
+<label> Restaurant Name
+    <input type="text" data-ng-model="post.restaurant" placeholder="Restaurant Name">
+</label>
+<label> Dish Name
+    <input type="text" data-ng-model="post.dishName" placeholder="Dish"/>
+</label>
+<br>
+<label>Description
+    <textarea rows="8" cols="100" data-ng-model="post.description">Description...</textarea>
+</label>
+<hr>
+<p ng-init="post.allergens = {}">Please select any allergens in the dish
+    <br>
+    <input type="checkbox" name="nuts" id="nuts" data-ng-model="post.allergens.nuts"/> Nuts
+    <input type="checkbox" name="treeNuts" id="treeNuts" data-ng-model="post.allergens.treeNuts"/> Tree Nuts
+    <input type="checkbox" name="milk" id="milk" data-ng-model="post.allergens.milk"/> Milk
+    <input type="checkbox" name="lactose" id="dairy" data-ng-model="post.allergens.dairy"/> Dairy
+    <input type="checkbox" name="glucose" id="glucose" data-ng-model="post.allergens.glucose"/> Wheat/Glucose
+    <input type="checkbox" name="eggs" id="eggs" data-ng-model="post.allergens.eggs"/> Eggs
+    <input type="checkbox" name="fish" id="fish" data-ng-model="post.allergens.fish"/> Fish
+    <input type="checkbox" name="shellfish" id="shellfish" data-ng-model="post.allergens.shellfish"/> Shellfish
+    <input type="checkbox" name="soy" id="soy" data-ng-model="post.allergens.soy"/> Soy
+
+</p>
+<p ng-init="post.allergens = {}">Select all that apply
+    <br>
+    <input type="checkbox" name="veagan" id="veagan" data-ng-model="post.diet.veagan"/> Veagan
+    <input type="checkbox" name="geggie" id="veggie" data-ng-model="post.diet.veggie"/> Vegetarian
+    <input type="checkbox" name="pescatarian" id="pescatarian" data-ng-model="post.diet.pescatarian"/> Pescatarian
+    <input type="checkbox" name="carbFre" id="carbFree" data-ng-model="post.diet.carbFree"/> Carb Fee
+    <input type="checkbox" name="carb" id="carb" data-ng-model="post.diet.carb"/> Low Carb
+    <input type="checkbox" name="protein" id="protein" data-ng-model="post.diet.protein"/> High Protein
+    <input type="checkbox" name="highFructose" id="highFructose" data-ng-model="post.diet.highFructose"/> Contains High Fructose Corn Syrup
+    <input type="checkbox" name="organic" id="organic" data-ng-model="post.diet.organic"/> Organic
+    <input type="checkbox" name="gmo" id="gmo" data-ng-model="post.diet.gmo"/> Free of GMO's
+</p>
 <button data-ng-click="createPost(post)">Create</button>

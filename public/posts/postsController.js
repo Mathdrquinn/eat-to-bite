@@ -6,6 +6,7 @@
         .controller('postsController', ['$scope', 'postsService', '$location', '$routeParams', function ($scope, postsService, $location, $routeParams) {
             postsService.getPosts().success(function (posts) {
                 $scope.posts = posts;
+                $scope.posts
             });
 
             postsService.getPost($routeParams.postId).success(function (post) {
@@ -13,6 +14,8 @@
             });
 
             $scope.createPost = function (newPost) {
+                console.log("post created: " + newPost);
+                newPost.date = new Date().getTime();
                 postsService.createPost(newPost);
                 $location.path('/posts');
             };

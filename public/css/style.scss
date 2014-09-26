@@ -1,0 +1,350 @@
+$lightGreen: #ccdddd;
+$green: #aacccc;
+$darkGreen: #426262;
+$lightGreen: #eeeeee;
+$purple: #95738C;
+$grey: #dddddd;
+$darkGrey: #999999;
+$black: black;
+$font: "Lucida Grande", Helvetica, Arial, sans-serif;
+
+/* Layouts and disign classes
+///////////////////////////////////////////////////////////////// */
+.inline {
+  display: inline-block;
+  position: relative;
+}
+.block {
+  display: block;
+  position: relative;
+}
+.absolute-bottom {
+  position: absolute;
+  bottom: 0;
+}
+.absolute-top-right {
+  position: absolute;
+  top:5px;
+  right: 5px;
+}
+.absolute-top-left {
+  position: absolute;
+  top:5px;
+  left: 5px;
+}
+.hide-ovrflw {
+  overflow: hidden;
+}
+.ovrflw-x {
+  overflow-x: scroll;
+}
+.ovrflw-y {
+  overflow-y: scroll;
+}
+.shadow {
+  -webkit-box-shadow: 0px 1px 7px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 7px 2px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 7px 2px rgba(0,0,0,0.75);
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.clear-right {
+  clear:right;
+}
+.clear-left {
+  clear: left;
+}
+.no-decoration {
+  list-style-type: none;
+}
+.no-underline {
+  text-decoration: none;
+}
+
+/* Padding classes
+///////////////////////////// */
+.no-padding {
+  padding:0;
+}
+.sm-padding {
+  padding: 3px;
+}
+.med-padding {
+  padding: 10px;
+}
+.lg-padding {
+  padding: 20px;
+}
+.sm-padding-left {
+  padding-left: 3px;
+}
+.med-padding-left {
+  padding-left: 10px;
+}
+.lg-padding-left {
+  padding-left: 20px;
+}
+.sm-padding-right {
+  padding-right: 3px;
+}
+.med-padding-right {
+  padding-right: 10px;
+}
+.lg-padding-right {
+  padding-right: 20px;
+}
+.sm-padding-top {
+  padding-top: 3px;
+}
+.med-padding-top {
+  padding-top: 10px;
+}
+.lg-padding-top {
+  padding-top: 20px;
+}
+.sm-padding-bottom {
+  padding-bottom: 3px;
+}
+.med-padding-bottom {
+  padding-bottom: 10px;
+}
+.lg-padding-bottom {
+  padding-bottom: 20px;
+}
+
+/* Margin classes
+///////////////////////////// */
+.no-margin {
+  margin: 0;
+}
+.sm-margin {
+  margin: 3px;
+}
+.med-margin {
+  margin: 10px;
+}
+.lg-margin {
+  margin: 20px;
+}
+.sm-margin-left {
+  margin-left: 3px;
+}
+.med-margin-left {
+  margin-left: 10px;
+}
+.lg-margin-left {
+  margin-left: 20px;
+}
+.sm-margin-right {
+  margin-right: 3px;
+}
+.med-margin-right {
+  margin-right: 10px;
+}
+.lg-margin-right {
+  margin-right: 20px;
+}
+.sm-margin-top {
+  margin-top: 3px;
+}
+.med-margin-top {
+  margin-top: 10px;
+}
+.lg-margin-top {
+  margin-top: 20px;
+}
+.sm-margin-bottom {
+  margin-bottom: 3px;
+}
+.med-margin-bottom {
+  margin-bottom: 10px;
+}
+.lg-margin-bottom {
+  margin-bottom: 20px;
+}
+.wide {
+  width:100%;
+}
+.high {
+  height: 100%;
+}
+
+/* Text Layout Class
+///////////////////////////// */
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+/* Text weight and size Class
+///////////////////////////// */
+
+.light {
+  font-weight: 300;
+}
+.medium {
+  font-wieght:400;
+}
+.heavy {
+  font-weight:600;
+}
+.small {
+  font-size: 12px;
+}
+.med {
+  font-size: 14px;
+}
+.tall {
+  font-size: 18px;
+}
+.v-tall {
+  font-size: 24px;
+}
+
+/* Font Color classes
+///////////////////////////// */
+.cl-lightGreen {
+  color: $lightGreen;
+}
+.cl-lightGreen-hover:hover {
+  color: $lightGreen;
+}
+.cl-purple {
+  color: $purple;
+}
+.cl-purple-hover:hover {
+  color: $purple;
+}
+.cl-dk-green {
+  color: $darkGreen;
+}
+.cl-dk-green-hover:hover {
+  color: $darkGreen;
+}
+.cl-light-green {
+  color: $lightGreen;
+}
+.cl-light-green-hover:hover {
+  color: $lightGreen;
+}
+.cl-green {
+  color: $green;
+}
+.cl-green-hover:hover {
+  color: $green;
+}
+.cl-dk-grey {
+  color: $darkGrey;
+}
+.cl-dk-grey-hover:hover {
+  color: $darkGrey;
+}
+.cl-black {
+  color: $black;
+}
+.cl-black-hover:hover {
+  color: $black;
+}
+
+/* Background Color classes
+///////////////////////////// */
+.bg-lightGreen {
+  background-color: rgba(238,238,238,0.35);
+}
+.bg-dk-green {
+  background-color: rgba(66,98,98,0.85);
+}
+.bg-lightGreen {
+  background-color: rgba(204,221,221,0.70);
+}
+.bg-green {
+  background-color: rgba(170,204,204,0.85);
+}
+.bg-dkgrey {
+  background-color: $darkGrey;
+}
+.bg-black {
+  background-color: rgba(0,0,0,0.35);
+}
+.bg-grey {
+  background-color: rgba(221,221,221,0.35);
+}
+.bg-grey-solid {
+  background-color: rgba(180,180,180,1);
+}
+.bg-purple {
+  background-color: rgba(149,115,140,0.25);
+}
+/* Element Styles
+///////////////////////////////////////////////////////////////// */
+.button {
+  background-color: $green;
+  color: $lightGreen;
+  padding: 10px;
+  transition: 0.3s;
+}
+.button:hover {
+  background-color:$darkGreen;
+}
+body {
+  background-image: url(http://cdn.clemensotto.com/codepen/img/1.jpg);
+  font-family: $font !important;
+}
+a {
+  color: #F9ECFF;
+}
+a:hover {
+  color: #F3C8FF;
+}
+h3 {
+  color: #F9ECFF;
+}
+
+.navHead{
+  width:100%;
+  height:100px;
+}
+#users {
+  width:90%;
+  margin-left:5%;
+  height:150px;
+}
+.logo{
+  font-size:2.5em;
+  text-align:right;
+}
+
+/* ng-View Design
+///////////////////// */
+
+
+/* Responsive Design
+///////////////////////////////////////////////////////////////// */
+
+/* Small devices (tablets, 768px and up) */
+@media all and (min-width: 500px) {
+
+}
+
+@media all and (min-width: 768px) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media all and (min-width: 992px) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media all and (min-width: 1200px) {
+
+}

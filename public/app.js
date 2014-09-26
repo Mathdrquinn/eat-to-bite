@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    angular.module('baby-mean',[
+    angular.module('eat-to-bite',[
     "ngRoute",
     "ngCookies",
     "posts"
