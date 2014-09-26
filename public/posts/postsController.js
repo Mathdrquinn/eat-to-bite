@@ -31,7 +31,7 @@
                 postsService.deletePost(id);
                 $location.path('/posts');
             }
-
+x
 
         }]);
 })();

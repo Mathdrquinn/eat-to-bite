@@ -3,35 +3,41 @@
 
     angular
         .module('profile')
-        .controller('profileCtrl', ['$scope', '$filter', 'profileSvc', '$location', '$routeParams', function ($scope, $filter, profileSvc, $location, $routeParams) {
+        .controller('profileCtrl', ['$scope', '$filter', 'profileSvc', '$location', '$routeParams', function ($scope, $filter, profileSvc, $location, $cookies) {
 
             $scope.work = "Angular is here!";
 
-            profileSvc.getMenus().success(function (menus) {
-                $scope.menus = menus;
-            });
+            $cookies.apple = "apple";
+            $scope.word = $cookies.apple;
+            console.log($cookies.apple);
 
-            profileSvc.getMenu($routeParams.postId).success(function (menu) {
-                $scope.menu = menu;
-                console.log("here with: " + $scope.menu);
-            });
+            $scope.setProfile = function(profile) {
+                profile.date = new Date().getTime();
+                profile.name = profile.firstName + " " + profile.lastName;
+                $cookies.profile = profile;
+                $scope.profile = $cookies.profile;
+            }
 
-            $scope.createMenu = function (newMenu) {
-                console.log("menu created: " + newMenu);
-                newMenu.date = new Date().getTime();
-                profileSvc.createMenu(newMenu);
-                $location.path('/search')
-            };
-
-            $scope.editMenu = function (menu) {
-                menuService.editMenu(menu);
-                $location.path('/editMenus');
-            };
-
-            $scope.deleteMenu = function (id) {
-                menuService.deleteMenu(id);
-                $location.path('/search');
-            };
+//            profileSvc.getProfile().success(function (profile) {
+//                $scope.profile = profile;
+//            });
+//
+//            $scope.createProfile = function (newProfile) {
+//                console.log("menu created: " + newProfile);
+//                newProfile.date = new Date().getTime();
+//                profileSvc.createProfile(newProfile);
+//                $location.path('/profile')
+//            };
+//
+//            $scope.editProfile = function (profile) {
+//                profileSvc.editProfile(menu);
+//                $location.path('/profile');
+//            };
+//
+//            $scope.deleteProfile = function (id) {
+//                profileSvc.deleteProfile(id);
+//                $location.path('/');
+//            };
 
         }]);
 })();

@@ -3,7 +3,8 @@
 
     angular
         .module('profile', [
-            "ngRoute"
+            "ngRoute",
+            "ngCookies"
         ])
         .config(function ($routeProvider) {
             $routeProvider
