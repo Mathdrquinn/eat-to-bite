@@ -4,7 +4,8 @@
     angular.module('eat-to-bite',[
     "ngRoute",
     "ngCookies",
-    "posts"
+    "posts",
+    "profile"
     ])
     .config(function ($routeProvider) {
         $routeProvider

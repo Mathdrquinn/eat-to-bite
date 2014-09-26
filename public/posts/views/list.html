@@ -1,7 +1,10 @@
 <a href="#/posts/new" class="btn btn-success">Create New Post</a>
-<section data-ng-repeat="post in posts">
+<a href="/" class="btn btn-success">Home</a>
+<section data-ng-repeat="post in posts | orderBy: predicate : -reverse">
     <h2>{{post.restaurant}}</h2>
+    <img style="max-width: 300px" src="{{post.restaurantImage}}" alt="Picture of {{post.restaurant}}"/>
     <p>{{post.dishName}}</p>
+    <img style="max-width:1200px" src="{{post.dishImage}}" alt="Picture of {{post.dish}}"/>
     <p>{{post.description}}</p>
     <span style="padding:5px; color:black" ng-show="post.diet.veagan">Veagan</span>
     <span style="padding:5px; color:grey" ng-show="post.diet.veggie">Vegetarian</span>
@@ -25,5 +28,7 @@
     <span style="padding:5px; color:red" ng-show="post.allergens.shellFish">Shellfish</span>
     <span style="padding:5px; color:green" ng-show="post.allergens.soy">Soy</span>
     <a href="#/posts/{{post._id}}">view more</a>
+    <hr/>
+    <hr/>
 
 </section>

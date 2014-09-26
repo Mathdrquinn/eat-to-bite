@@ -1,5 +1,32 @@
 <section>
-    <h1>{{post.title}}</h1>
-    <p>{{post.content}}</p>
+    <h2>{{post.restaurant}}</h2>
+    <img style="max-width: 300px" src="{{post.restaurantImage}}" alt="Picture of {{post.restaurant}}"/>
+    <p>{{post.dishName}}</p>
+    <img style="max-width:1200px" src="{{post.dishImage}}" alt="Picture of {{post.dish}}"/>
+    <p>{{post.description}}</p>
+    <span style="padding:5px; color:black" ng-show="post.diet.veagan">Veagan</span>
+    <span style="padding:5px; color:grey" ng-show="post.diet.veggie">Vegetarian</span>
+    <span style="padding:5px; color:darkgrey" ng-show="post.diet.pescatarian">Pescatarian</span>
+    <span style="padding:5px; color:black" ng-show="post.diet.carbFree">Carb Free</span>
+    <span style="padding:5px; color:grey" ng-show="post.diet.carb">Low Carb</span>
+    <span style="padding:5px; color:darkgrey" ng-show="post.diet.protein">High Protein</span>
+    <span style="padding:5px; color:black" ng-show="post.diet.highFructose">High Fructose Corn Syrup</span>
+    <span style="padding:5px; color:grey" ng-show="post.diet.organic">Organic</span>
+    <span style="padding:5px; color:darkgrey" ng-show="post.diet.gmo">GMO free</span>
+    <hr>
+    Contains:
+    <br>
+    <span style="padding:5px; color:red" ng-show="post.allergens.nuts">Nuts</span>
+    <span style="padding:5px; color:blue" ng-show="post.allergens.treeNuts">Tree Nuts</span>
+    <span style="padding:5px; color:green" ng-show="post.allergens.milk">Milk</span>
+    <span style="padding:5px; color:red" ng-show="post.allergens.dairy">Dairy</span>
+    <span style="padding:5px; color:blue" ng-show="post.allergens.glucose">Wheat/Glucose</span>
+    <span style="padding:5px; color:green" ng-show="post.allergens.eggs">Eggs</span>
+    <span style="padding:5px; color:blue" ng-show="post.allergens.fish">Fish</span>
+    <span style="padding:5px; color:red" ng-show="post.allergens.shellFish">Shellfish</span>
+    <span style="padding:5px; color:green" ng-show="post.allergens.soy">Soy</span>
+    <a href="#/posts/{{post._id}}">view more</a>
+    <hr/>
+    <hr/>
     <a href="#/posts/{{post._id}}/edit">Edit</a> | <a ng-click="deletePost(post._id)">Delete</a>
 </section>

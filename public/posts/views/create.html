@@ -27,11 +27,13 @@
     <input type="checkbox" name="veagan" id="veagan" data-ng-model="post.diet.veagan"/> Veagan
     <input type="checkbox" name="geggie" id="veggie" data-ng-model="post.diet.veggie"/> Vegetarian
     <input type="checkbox" name="pescatarian" id="pescatarian" data-ng-model="post.diet.pescatarian"/> Pescatarian
-    <input type="checkbox" name="carbFre" id="carbFree" data-ng-model="post.diet.carbFree"/> Carb Fee
+    <input type="checkbox" name="carbFre" id="carbFree" data-ng-model="post.diet.carbFree"/> Carb Free
     <input type="checkbox" name="carb" id="carb" data-ng-model="post.diet.carb"/> Low Carb
     <input type="checkbox" name="protein" id="protein" data-ng-model="post.diet.protein"/> High Protein
     <input type="checkbox" name="highFructose" id="highFructose" data-ng-model="post.diet.highFructose"/> Contains High Fructose Corn Syrup
     <input type="checkbox" name="organic" id="organic" data-ng-model="post.diet.organic"/> Organic
     <input type="checkbox" name="gmo" id="gmo" data-ng-model="post.diet.gmo"/> Free of GMO's
 </p>
+<input type="text" placeholder="Image of dish" data-ng-model="post.dishImage"/>
+<input type="text" placeholder="Image of Restaurant" data-ng-model="post.restaurantImage"/>
 <button data-ng-click="createPost(post)">Create</button>

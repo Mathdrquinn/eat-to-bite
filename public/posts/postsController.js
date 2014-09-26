@@ -3,14 +3,16 @@
 
     angular
         .module('posts')
-        .controller('postsController', ['$scope', 'postsService', '$location', '$routeParams', function ($scope, postsService, $location, $routeParams) {
+        .controller('postsController', ['$scope', '$filter', 'postsService', '$location', '$routeParams', function ($scope, $filter, postsService, $location, $routeParams) {
             postsService.getPosts().success(function (posts) {
+                var orderBy = $filter('orderBy');
                 $scope.posts = posts;
-                $scope.posts
+                $scope.posts = orderBy($scope.posts, '-date', false);
             });
 
             postsService.getPost($routeParams.postId).success(function (post) {
                 $scope.post = post;
+                console.log("here with: " + $scope.post);
             });
 
             $scope.createPost = function (newPost) {
