@@ -3,46 +3,29 @@
 
     angular
         .module('profile')
-        .controller('profileCtrl', ['$scope', '$filter', 'profileSvc', '$location', '$routeParams', function ($scope, $filter, profileSvc, $location, $cookies, $cookieStore) {
+        .controller('profileCtrl', ['$scope', '$filter', 'profileSvc', '$location', '$cookieStore', function ($scope, $filter, profileSvc, $location, $cookieStore) {
 
             $scope.work = "Angular is here!";
 
-            $cookies.apple = "apple";
-            $scope.word = $cookies.apple;
-            console.log($cookies.apple);
+            $cookieStore.put("name", "my name");
+            $scope.word = $cookieStore.get("name");
+            console.log($scope.word);
 
-            $scope.setProfile = function(profile) {
-                profile.date = new Date().getTime();
-                profile.name = profile.firstName + " " + profile.lastName;
-                profileSvc.addProfile(profile);
-                $scope.user = $cookieStore.get('profile');
-                console.log("outta here");
-                $location.path("/profile");
+            $scope.makeProfile = function (newProfile) {
+                console.log("person created: " + newProfile);
+                newProfile.name = newProfile.firstName + " " + newProfile.lastName;
+                newProfile.date = new Date().getTime();
+                newProfile.created = true;
+                $cookieStore.put("profile", newProfile);
+                console.log("cookie created: " + $cookieStore.get("profile"));
+                $location.path('/profile')
             };
 
-            console.log($cookies.profile);
-            console.log($scope.user);
+            $scope.printCookie = function () {
+                console.log($cookieStore.get("profile"))
+            };
 
-//            profileSvc.getProfile().success(function (profile) {
-//                $scope.profile = profile;
-//            });
-//
-//            $scope.createProfile = function (newProfile) {
-//                console.log("menu created: " + newProfile);
-//                newProfile.date = new Date().getTime();
-//                profileSvc.createProfile(newProfile);
-//                $location.path('/profile')
-//            };
-//
-//            $scope.editProfile = function (profile) {
-//                profileSvc.editProfile(menu);
-//                $location.path('/profile');
-//            };
-//
-//            $scope.deleteProfile = function (id) {
-//                profileSvc.deleteProfile(id);
-//                $location.path('/');
-//            };
+            $scope.person = $cookieStore.get("profile");
 
         }]);
 })();
