@@ -13,13 +13,13 @@ here!
     <input type="text" placeholder="Image Url" ng-model="person.avatar"/>
     <label for="preferences"> Preferred Style
         <select name="preference" id="preferences" ng-model="person.likes">
-            <option ng-click="!american" value="American">American</option>
-            <option ng-click="!southern" value="Southern">Southern</option>
-            <option ng-click="!seafood" value="Seafood">Seafood</option>
-            <option ng-click="!baked" value="bakedGoods">Baked Goods</option>
-            <option ng-click="!cajuan" value="Cajuan">Cajuan</option>
-            <option ng-click="!chinese" value="Chinese">Chinese</option>
-            <option ng-click="!thai" value="Thai">Thai</option>
+            <option ng-click="american=!american" value="American">American</option>
+            <option ng-click="southern=!southern" value="Southern">Southern</option>
+            <option ng-click="seafood=!seafood" value="Seafood">Seafood</option>
+            <option ng-click="baked=!baked" value="bakedGoods">Baked Goods</option>
+            <option ng-click="cajuan=!cajuan" value="Cajuan">Cajuan</option>
+            <option ng-click="chinese=!chinese" value="Chinese">Chinese</option>
+            <option ng-click="thai=!thai" value="Thai">Thai</option>
         </select>
     </label>
     <label for="dislikes"> Aversions
@@ -33,7 +33,7 @@ here!
             <option ng-hide="thai" value="Thai">Thai</option>
         </select>
     </label>
-    <lable> Allergies
+    <label> Allergies
         <br/>
         <input type="checkbox" name="nuts" id="nuts" data-ng-model="person.allergens.nuts"/> Nuts
         <input type="checkbox" name="treeNuts" id="treeNuts" data-ng-model="person.allergens.treeNuts"/> Tree Nuts
@@ -44,18 +44,20 @@ here!
         <input type="checkbox" name="fish" id="fish" data-ng-model="person.allergens.fish"/> Fish
         <input type="checkbox" name="shellfish" id="shellfish" data-ng-model="person.allergens.shellfish"/> Shellfish
         <input type="checkbox" name="soy" id="soy" data-ng-model="person.allergens.soy"/> Soy
-    </lable>
-    <lable> Dietary Needs
+    </label>
+    <br/>
+    <label> Dietary Needs
         <br/>
         <input type="checkbox" name="veagan" id="veagan" data-ng-model="person.diet.veagan"/> Veagan
         <input type="checkbox" name="geggie" id="veggie" data-ng-model="person.diet.veggie"/> Vegetarian
         <input type="checkbox" name="pescatarian" id="pescatarian" data-ng-model="person.diet.pescatarian"/> Pescatarian
+        <input type="checkbox" name="polloPesca" id="polloPesca" data-ng-model="person.diet.polloPesca"/>Pollo-pescetarian
         <input type="checkbox" name="carbFre" id="carbFree" data-ng-model="person.diet.carbFree"/> Carb Free
         <input type="checkbox" name="carb" id="carb" data-ng-model="person.diet.carb"/> Low Carb
         <input type="checkbox" name="protein" id="protein" data-ng-model="person.diet.protein"/> High Protein
-        <input type="checkbox" name="highFructose" id="highFructose" data-ng-model="person.diet.highFructose"/> Contains High Fructose Corn Syrup
+        <input type="checkbox" name="highFructose" id="highFructose" data-ng-model="person.diet.highFructose"/> Contains No High Fructose Corn Syrup
         <input type="checkbox" name="organic" id="organic" data-ng-model="person.diet.organic"/> Organic
         <input type="checkbox" name="gmo" id="gmo" data-ng-model="person.diet.gmo"/> Free of GMO's
-    </lable>
+    </label>
     <button type="submit">Submit</button>
 </form>

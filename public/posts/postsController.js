@@ -30,8 +30,7 @@
             $scope.deletePost = function (id) {
                 postsService.deletePost(id);
                 $location.path('/posts');
-            }
-x
+            };
 
         }]);
 })();

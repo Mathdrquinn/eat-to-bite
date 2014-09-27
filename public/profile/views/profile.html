@@ -3,7 +3,7 @@ here!
 {{word}}
 <a href="/">Home</a>
 
-<div>
+<div class="cl-black">
     <h2>{{person.name}}<span>{{person.dob | date : M/d/yy}}</span></h2>
     <img style="max-width: 200px" src="{{person.avatar}}" alt="Picture of {{person.name}}"/>
     <p>{{person.email}}</p>
@@ -11,27 +11,28 @@ here!
     <p>Distains: {{person.dislikes}}</p>
     Dietary needs:
     <br/>
-    <span style="padding:5px; color:black" ng-show="person.diet.veagan">Veagan</span>
-    <span style="padding:5px; color:grey" ng-show="person.diet.veggie">Vegetarian</span>
-    <span style="padding:5px; color:darkgrey" ng-show="person.diet.pescatarian">Pescatarian</span>
-    <span style="padding:5px; color:black" ng-show="person.diet.carbFree">Carb Free</span>
-    <span style="padding:5px; color:grey" ng-show="person.diet.carb">Low Carb</span>
-    <span style="padding:5px; color:darkgrey" ng-show="person.diet.protein">High Protein</span>
-    <span style="padding:5px; color:black" ng-show="person.diet.highFructose">High Fructose Corn Syrup</span>
-    <span style="padding:5px; color:grey" ng-show="person.diet.organic">Organic</span>
-    <span style="padding:5px; color:darkgrey" ng-show="person.diet.gmo">GMO free</span>
+    <span class="diet veagan sm-padding" ng-show="person.diet.veagan">Veagan</span>
+    <span class="diet veggie sm-padding" ng-show="person.diet.veggie">Vegetarian</span>
+    <span class="diet pescatarian sm-padding" ng-show="person.diet.pescatarian">Pescatarian</span>
+    <span class="diet polloPesca sm-padding" ng-show="person.diet.polloPesca">Pollo-pescetarian</span>
+    <span class="diet carbFree sm-padding" ng-show="person.diet.carbFree">Carb Free</span>
+    <span class="diet carb sm-padding" ng-show="person.diet.carb">Low Carb</span>
+    <span class="diet protien sm-padding" ng-show="person.diet.protein">High Protein</span>
+    <span class="diet highFructose sm-padding" ng-show="person.diet.highFructose">No High Fructose Corn Syrup</span>
+    <span class="diet organic sm-padding" ng-show="person.diet.organic">Organic</span>
+    <span class="diet gmo sm-padding" ng-show="person.diet.gmo">GMO free</span>
     <hr/>
     Allergic to:
     <br>
-    <span style="padding:5px; color:red" ng-show="person.allergens.nuts">Nuts</span>
-    <span style="padding:5px; color:blue" ng-show="person.allergens.treeNuts">Tree Nuts</span>
-    <span style="padding:5px; color:green" ng-show="person.allergens.milk">Milk</span>
-    <span style="padding:5px; color:red" ng-show="person.allergens.dairy">Dairy</span>
-    <span style="padding:5px; color:blue" ng-show="person.allergens.glucose">Wheat/Glucose</span>
-    <span style="padding:5px; color:green" ng-show="person.allergens.eggs">Eggs</span>
-    <span style="padding:5px; color:blue" ng-show="person.allergens.fish">Fish</span>
-    <span style="padding:5px; color:red" ng-show="person.allergens.shellFish">Shellfish</span>
-    <span style="padding:5px; color:green" ng-show="person.allergens.soy">Soy</span>
+    <span class="allergen nuts sm-padding" ng-show="person.allergens.nuts">Nuts</span>
+    <span class="allergen nuts sm-padding" ng-show="person.allergens.treeNuts">Tree Nuts</span>
+    <span class="allergen nuts sm-padding" ng-show="person.allergens.milk">Milk</span>
+    <span class="allergen nuts sm-padding" ng-show="person.allergens.dairy">Dairy</span>
+    <span class="allergen nuts sm-padding" ng-show="person.allergens.glucose">Wheat/Glucose</span>
+    <span class="allergen nuts sm-padding" ng-show="person.allergens.eggs">Eggs</span>
+    <span class="allergen nuts sm-padding" ng-show="person.allergens.fish">Fish</span>
+    <span class="allergen nuts sm-padding" ng-show="person.allergens.shellFish">Shellfish</span>
+    <span class="allergen nuts sm-padding" ng-show="person.allergens.soy">Soy</span>
     <br/>
     <a href="#/createProfile"><button>Edit</button></a>
     <!--<button ng-click="printCookie()">Print</button>-->
