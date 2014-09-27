@@ -44,6 +44,8 @@ Create Menus List
         </label>
         <button type="submit" ng-click="menuMajor=!menuMajor; menuMinor=!menuMinor">Next</button>
     </form>
+    <button ng-click="creation.addMenuHtml()">Add Menu</button>
+    <div ng-bind-html="wiggle"></div>
 </div>
 <div class="menuMinor">
     <h4><em>Step 3: </em>Add Section<span ng-model="menu.info.type"></span></h4>

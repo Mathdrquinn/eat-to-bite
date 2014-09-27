@@ -98,6 +98,17 @@
                         }
                     }
                 }
+                this.menuHtml = [
+                    "<h1>helloWorld</h1>",
+                    "<br>"
+                ].join("");
+                this.addMenuHtml = function () {
+                    $scope.wiggle = [].join("");
+                    console.log("wiggle before: " + $scope.wiggle);
+                    $scope.wiggle.split("").append(this.menuHtml).join("");
+                    console.log("wiggle after: " + $scope.wiggle);
+
+                }
             };
 
             $scope.creation = new Restaurant ();

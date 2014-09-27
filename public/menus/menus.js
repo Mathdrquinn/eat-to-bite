@@ -3,7 +3,8 @@
 
     angular
         .module('menus', [
-            "ngRoute"
+            "ngRoute",
+            "ngSanitize"
         ])
         .config(function ($routeProvider) {
             $routeProvider
