@@ -1,3 +1,59 @@
 Menus List
-<a href="#/createMenus">Create New Menu</a>
 <a href="/">Home</a>
+<p>{{work}}</p>
+
+<div id="list" class="sm-padding">
+    <ul class="no-margin no-decoration">
+        <li class="place" ng-repeat="place in restaurants">
+            <p>{{place.name}}</p>
+            <p>{{place.description}}</p>
+            <p>{{place.style}}</p>
+            <ul class="no-margin no-decoration menuList">
+                <li class="menu" ng-repeat="menu in place.menus">
+                    <p>{{menu.name}}</p>
+                    <p>{{menu.description}}</p>
+                    <p>{{menu.type}}</p>
+                    <ul class="no-margin no-decoration sectionList">
+                        <li class="section" ng-repeat="section in menu.sections">
+                            <p>{{section.name}}</p>
+                            <p>{{section.description}}</p>
+                            <ul class="no-margin no-decoration dishList">
+                                <li class="dish" ng-repeat="dish in section.dishes">
+                                    <p>{{dish.name}}</p>
+                                    <p>{{dish.description}}</p>
+                                    <div class="allergens">
+                                        Allergens
+                                        <br>
+                                        <span type="checkbox" name="nuts" id="nuts" ng-show="dish.allergens.nuts"> Nuts</span>
+                                        <span type="checkbox" name="treeNuts" id="treeNuts" ng-show="dish.allergens.treeNuts"> Tree Nuts</span>
+                                        <span type="checkbox" name="milk" id="milk" ng-show="dish.allergens.milk"> Milk</span>
+                                        <span type="checkbox" name="lactose" id="dairy" ng-show="dish.allergens.dairy"> Dairy</span>
+                                        <span type="checkbox" name="glucose" id="glucose" ng-show="dish.allergens.glucose"> Wheat/Glucose</span>
+                                        <span type="checkbox" name="eggs" id="eggs" ng-show="dish.allergens.eggs"> Eggs</span>
+                                        <span type="checkbox" name="fish" id="fish" ng-show="dish.allergens.fish"> Fish</span>
+                                        <span type="checkbox" name="shellfish" id="shellfish" ng-show="dish.allergens.shellfish"> Shellfish</span>
+                                        <span type="checkbox" name="soy" id="soy" ng-show="dish.allergens.soy"> Soy</span>
+                                    </div>
+                                    <div class="diet">
+                                        Qualities
+                                        <br>
+                                        <span type="checkbox" name="veagan" id="veagan" ng-show="dish.diet.veagan"> Veagan</span>
+                                        <span type="checkbox" name="geggie" id="veggie" ng-show="dish.diet.veggie"> Vegetarian</span>
+                                        <span type="checkbox" name="pescatarian" id="pescatarian" ng-show="dish.diet.pescatarian"> Pescatarian</span>
+                                        <span type="checkbox" name="polloPesca" id="polloPesca" ng-show="dish.diet.polloPesca">Pollo-pescetarian</span>
+                                        <span type="checkbox" name="carbFre" id="carbFree" ng-show="dish.diet.carbFree"> Carb Free</span>
+                                        <span type="checkbox" name="carb" id="carb" ng-show="dish.diet.carb"> Low Carb</span>
+                                        <span type="checkbox" name="protein" id="protein" ng-show="dish.diet.protein"> High Protein</span>
+                                        <span type="checkbox" name="highFructose" id="highFructose" ng-show="dish.diet.highFructose"> Contains No High Fructose Corn Syrup</span>
+                                        <span type="checkbox" name="organic" id="organic" ng-show="dish.diet.organic"> Organic</span>
+                                        <span type="checkbox" name="gmo" id="gmo" ng-show="dish.diet.gmo"> Free of GMO's</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

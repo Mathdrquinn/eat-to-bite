@@ -7,38 +7,38 @@
 
             // public service methods
             return {
-                getPosts: getPosts,
-                getPost: getPost,
-                createPost: createPost,
-                editPost: editPost,
-                deletePost: deletePost
+                getRestaurants: getRestaurants,
+                getRestaurant: getRestaurant,
+                createRestaurant: createRestaurant,
+                editRestaurant: editRestaurant,
+                deleteRestaurant: deleteRestaurant
             };
 
-            function getPosts() {
+            function getRestaurants() {
 
-                return $http.get("api/collections/featuredDishes");
+                return $http.get("api/collections/restaurants");
             }
 
-            function getPost(postId) {
-                return $http.get("api/collections/featuredDishes/" + postId);
+            function getRestaurant(restaurantId) {
+                return $http.get("api/collections/restaurants/" + restaurantId);
             }
 
-            function createPost(newPost) {
-                $http.post("api/collections/featuredDishes", newPost).then(function (res) {
-                    $rootScope.$broadcast("post:added");
+            function createRestaurant(newRestaurant) {
+                $http.post("api/collections/restaurants", newRestaurant).then(function (res) {
+                    $rootScope.$broadcast("restaurant:added");
                 });
             }
 
-            function editPost(post) {
-                $http.put("api/collections/featuredDishes/" + post._id, post).then(function (res) {
-                    $rootScope.$broadcast("post:updated");
+            function editRestaurant(restaurant) {
+                $http.put("api/collections/restaurants/" + restaurant._id, restaurant).then(function (res) {
+                    $rootScope.$broadcast("restaurant:updated");
                 });
 
             }
 
-            function deletePost(postId) {
-                $http.delete("api/collections/featuredDishes/" + postId).then(function (res) {
-                    $rootScope.$broadcast("post:deleted");
+            function deleteRestaurant(restaurantId) {
+                $http.delete("api/collections/restaurants/" + restaurantId).then(function (res) {
+                    $rootScope.$broadcast("restaurant:deleted");
                 });
             }
 
