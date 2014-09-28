@@ -5,15 +5,26 @@ Menus List
 <div id="list" class="sm-padding">
     <ul class="no-margin no-decoration">
         <li class="place" ng-repeat="place in restaurants">
-            <p>{{place.name}}</p>
-            <p>{{place.description}}</p>
-            <p>{{place.style}}</p>
-            <ul class="no-margin no-decoration menuList">
+            <p>{{place.name}} <span>{{place.style}}</span><span>{{place.menus.length}} menus</span></p>
+            <p>
+                <a href=""><button class="seeMore" ng-show="!showMore" ng-click="showMore=!showMore">See More</button></a>
+                <a href=""><button class="seeMore" ng-show="showMore" ng-click="showMore=!showMore">See Less</button></a>
+                <a href=""><button class="seeMenus" ng-show="!showMenus" ng-click="showMenus=!showMenus">Menus</button></a>
+                <a href=""><button class="hideMenus" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
+            </p>
+            <div class="info" ng-show="showMore">
+                <p>{{place.description}}</p>
+                <p><a href=""><button ng-click="showMore=!showMore">Show Less</button></a></p>
+            </div>
+            <ul class="no-margin no-decoration menuList" ng-show="showMenus">
                 <li class="menu" ng-repeat="menu in place.menus">
                     <p>{{menu.name}}</p>
                     <p>{{menu.description}}</p>
-                    <p>{{menu.type}}</p>
-                    <ul class="no-margin no-decoration sectionList">
+                    <p>
+                        <a href=""><button class="HideMenus" ng-click="showMenus=!showMenus">Hide Menus Broken</button></a>
+                        <a href=""><button ng-click="showMenu=!showMenu">Show Dishes</button></a>
+                    </p>
+                    <ul class="no-margin no-decoration sectionList" ng-show="showMenu">
                         <li class="section" ng-repeat="section in menu.sections">
                             <p>{{section.name}}</p>
                             <p>{{section.description}}</p>
