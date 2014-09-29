@@ -337,6 +337,10 @@ a {
 .oldLinks {
   text-align: center; }
 
+#mapPort {
+  width: 50%;
+  height: 480px; }
+
 /* Responsive Design
 ///////////////////////////////////////////////////////////////// */
 /* Small devices (tablets, 768px and up) */

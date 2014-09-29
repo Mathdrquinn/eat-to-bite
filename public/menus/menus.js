@@ -4,6 +4,7 @@
     angular
         .module('menus', [
             "ngRoute",
+            "ngCookies",
             "ngSanitize"
         ])
         .config(function ($routeProvider) {

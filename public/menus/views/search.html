@@ -1,73 +1,112 @@
-Menus List
+<h2>{{person.name}} seach for an <em>Eat-to-Bite</em></h2>
+<button ng-click="checker.sayFirstRestaurant()">talk</button>
+<button ng-click="checker.sayName()">talk to me</button>
 <a href="/">Home</a>
 <p>{{work}}</p>
 
-<div id="list" class="sm-padding">
-    <ul class="no-margin no-decoration">
-        <li class="place" ng-repeat="place in restaurants">
-            <p>{{place.name}} <span>{{place.style}}</span><span>{{place.menus.length}} menus</span></p>
-            <p>
-                <a href=""><button class="seeMore" ng-show="!showMore" ng-click="showMore=!showMore">See More</button></a>
-                <a href=""><button class="seeMore" ng-show="showMore" ng-click="showMore=!showMore">See Less</button></a>
-                <a href=""><button class="seeMenus" ng-show="!showMenus" ng-click="showMenus=!showMenus">Menus</button></a>
-                <a href=""><button class="hideMenus" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
-                <a href="#/restaurantMenu/{{place._id}}"><button class="seeSingle">See This Restaurant</button></a>
-            </p>
-            <div class="info" ng-show="showMore">
-                <p>{{place.description}}</p>
-                <p><a href=""><button ng-click="showMore=!showMore">Show Less</button></a></p>
-            </div>
-            <ul class="no-margin no-decoration menuList" ng-show="showMenus">
-                <li class="menu" ng-repeat="menu in place.menus">
-                    <p>{{menu.name}}</p>
-                    <p>{{menu.description}}</p>
+<div class="row bigBox no-padding no-margin">
+<div class="boxLeft col-lg-8 col-md-6 col-sm-12">
+        <form action="" id="#searchForm" class="no-margin">
+            <input id="formName" class="no-margin inline" type="text" placeholder="Search by Name" ng-model="search.name"/>
+            <label class="formLabel">Style
+                <select name="" id="formStyle" ng-model="search.style">
+                    <option value="American">American</option>
+                    <option value="Southern">Southern</option>
+                    <option value="Seafood">Seafood</option>
+                    <option value="bakedGoods">Baked Goods</option>
+                    <option value="Cajuan">Cajuan</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Thai">Thai</option>
+                </select>
+            </label>
+            <label class="formLabel">
+                <select name="" id="formDistance" ng.model="search.distance">
+                    <option class="no-margin" value="1">< 1 mi.</option>
+                    <option class="no-margin" value="3">< 3 mi.</option>
+                    <option class="no-margin" value="5">< 5 mi.</option>
+                    <option class="no-margin" value="10">< 10 mi.</option>
+                    <option class="no-margin" value="20">< 20 mi.</option>
+                </select>
+            </label>
+        </form>
+        <div id="list" class="sm-padding">
+            <ul class="no-margin no-decoration">
+                <li class="place" ng-repeat="place in restaurants | filter : search : strict">
+                    <p>{{place.name}} <span>{{place.style}}</span><span>{{place.menus.length}} menus</span></p>
                     <p>
-                        <a href=""><button ng-show="!showMenu" ng-click="showMenu=!showMenu">Show Dishes</button></a>
-                        <a href=""><button ng-show="showMenu" ng-click="showMenu=!showMenu">Hide Dishes</button></a>
+                        <a href=""><button class="seeMore" ng-show="!showMore" ng-click="showMore=!showMore">See More</button></a>
+                        <a href=""><button class="seeMore" ng-show="showMore" ng-click="showMore=!showMore">See Less</button></a>
+                        <a href=""><button class="seeMenus" ng-show="!showMenus" ng-click="showMenus=!showMenus">Menus</button></a>
+                        <a href=""><button class="hideMenus" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
+                        <a href="#/restaurantMenu/{{place._id}}"><button class="seeSingle">See This Restaurant</button></a>
                     </p>
-                    <ul class="no-margin no-decoration sectionList" ng-show="showMenu">
-                        <li class="section" ng-repeat="section in menu.sections">
-                            <p>{{section.name}}</p>
-                            <p>{{section.description}}</p>
-                            <ul class="no-margin no-decoration dishList">
-                                <li class="dish" ng-repeat="dish in section.dishes">
-                                    <p>{{dish.name}}</p>
-                                    <p>{{dish.description}}</p>
-                                    <div class="allergens">
-                                        Allergens
-                                        <br>
-                                        <span type="checkbox" name="nuts" id="nuts" ng-show="dish.allergens.nuts"> Nuts</span>
-                                        <span type="checkbox" name="treeNuts" id="treeNuts" ng-show="dish.allergens.treeNuts"> Tree Nuts</span>
-                                        <span type="checkbox" name="milk" id="milk" ng-show="dish.allergens.milk"> Milk</span>
-                                        <span type="checkbox" name="lactose" id="dairy" ng-show="dish.allergens.dairy"> Dairy</span>
-                                        <span type="checkbox" name="glucose" id="glucose" ng-show="dish.allergens.glucose"> Wheat/Glucose</span>
-                                        <span type="checkbox" name="eggs" id="eggs" ng-show="dish.allergens.eggs"> Eggs</span>
-                                        <span type="checkbox" name="fish" id="fish" ng-show="dish.allergens.fish"> Fish</span>
-                                        <span type="checkbox" name="shellfish" id="shellfish" ng-show="dish.allergens.shellfish"> Shellfish</span>
-                                        <span type="checkbox" name="soy" id="soy" ng-show="dish.allergens.soy"> Soy</span>
-                                    </div>
-                                    <div class="diet">
-                                        Qualities
-                                        <br>
-                                        <span type="checkbox" name="veagan" id="veagan" ng-show="dish.diet.veagan"> Veagan</span>
-                                        <span type="checkbox" name="geggie" id="veggie" ng-show="dish.diet.veggie"> Vegetarian</span>
-                                        <span type="checkbox" name="pescatarian" id="pescatarian" ng-show="dish.diet.pescatarian"> Pescatarian</span>
-                                        <span type="checkbox" name="polloPesca" id="polloPesca" ng-show="dish.diet.polloPesca">Pollo-pescetarian</span>
-                                        <span type="checkbox" name="carbFre" id="carbFree" ng-show="dish.diet.carbFree"> Carb Free</span>
-                                        <span type="checkbox" name="carb" id="carb" ng-show="dish.diet.carb"> Low Carb</span>
-                                        <span type="checkbox" name="protein" id="protein" ng-show="dish.diet.protein"> High Protein</span>
-                                        <span type="checkbox" name="highFructose" id="highFructose" ng-show="dish.diet.highFructose"> Contains No High Fructose Corn Syrup</span>
-                                        <span type="checkbox" name="organic" id="organic" ng-show="dish.diet.organic"> Organic</span>
-                                        <span type="checkbox" name="gmo" id="gmo" ng-show="dish.diet.gmo"> Free of GMO's</span>
-                                    </div>
+                    <div class="info" ng-show="showMore">
+                        <p>{{place.description}}</p>
+                        <p><a href=""><button ng-click="showMore=!showMore">Show Less</button></a></p>
+                    </div>
+                    <ul class="no-margin no-decoration menuList" ng-show="showMenus">
+                        <li class="menu" ng-repeat="menu in place.menus">
+                            <p>{{menu.name}}</p>
+                            <p>{{menu.description}}</p>
+                            <p>
+                                <a href=""><button ng-show="!showMenu" ng-click="showMenu=!showMenu">Show Dishes</button></a>
+                                <a href=""><button ng-show="showMenu" ng-click="showMenu=!showMenu">Hide Dishes</button></a>
+                            </p>
+                            <ul class="no-margin no-decoration sectionList" ng-show="showMenu">
+                                <li class="section" ng-repeat="section in menu.sections">
+                                    <p>{{section.name}}</p>
+                                    <p>{{section.description}}</p>
+                                    <ul class="no-margin no-decoration dishList">
+                                        <li class="dish" ng-repeat="dish in section.dishes">
+                                            <p>{{dish.name}}</p>
+                                            <p>{{dish.description}}</p>
+                                            <div class="allergens">
+                                                Allergens
+                                                <br>
+                                                <span type="checkbox" name="nuts" id="nuts" ng-show="dish.allergens.nuts"> Nuts</span>
+                                                <span type="checkbox" name="treeNuts" id="treeNuts" ng-show="dish.allergens.treeNuts"> Tree Nuts</span>
+                                                <span type="checkbox" name="milk" id="milk" ng-show="dish.allergens.milk"> Milk</span>
+                                                <span type="checkbox" name="lactose" id="dairy" ng-show="dish.allergens.dairy"> Dairy</span>
+                                                <span type="checkbox" name="glucose" id="glucose" ng-show="dish.allergens.glucose"> Wheat/Glucose</span>
+                                                <span type="checkbox" name="eggs" id="eggs" ng-show="dish.allergens.eggs"> Eggs</span>
+                                                <span type="checkbox" name="fish" id="fish" ng-show="dish.allergens.fish"> Fish</span>
+                                                <span type="checkbox" name="shellfish" id="shellfish" ng-show="dish.allergens.shellfish"> Shellfish</span>
+                                                <span type="checkbox" name="soy" id="soy" ng-show="dish.allergens.soy"> Soy</span>
+                                            </div>
+                                            <div class="diet">
+                                                Qualities
+                                                <br>
+                                                <span type="checkbox" name="veagan" id="veagan" ng-show="dish.diet.veagan"> Veagan</span>
+                                                <span type="checkbox" name="geggie" id="veggie" ng-show="dish.diet.veggie"> Vegetarian</span>
+                                                <span type="checkbox" name="pescatarian" id="pescatarian" ng-show="dish.diet.pescatarian"> Pescatarian</span>
+                                                <span type="checkbox" name="polloPesca" id="polloPesca" ng-show="dish.diet.polloPesca">Pollo-pescetarian</span>
+                                                <span type="checkbox" name="carbFre" id="carbFree" ng-show="dish.diet.carbFree"> Carb Free</span>
+                                                <span type="checkbox" name="carb" id="carb" ng-show="dish.diet.carb"> Low Carb</span>
+                                                <span type="checkbox" name="protein" id="protein" ng-show="dish.diet.protein"> High Protein</span>
+                                                <span type="checkbox" name="highFructose" id="highFructose" ng-show="dish.diet.highFructose"> Contains No High Fructose Corn Syrup</span>
+                                                <span type="checkbox" name="organic" id="organic" ng-show="dish.diet.organic"> Organic</span>
+                                                <span type="checkbox" name="gmo" id="gmo" ng-show="dish.diet.gmo"> Free of GMO's</span>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
+                            <a href=""><button ng-show="showMenu" ng-click="showMenu=!showMenu">Hide Dishes</button></a>
                         </li>
                     </ul>
-                    <a href=""><button ng-show="showMenu" ng-click="showMenu=!showMenu">Hide Dishes</button></a>
+                    <a href=""><button class="HideMenus" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
                 </li>
             </ul>
-            <a href=""><button class="HideMenus" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
-        </li>
-    </ul>
+        </div>
+    </div>
+    <div class="boxRight col-lg-4 col-md-6 col-sm-12">
+        <p>lets see if this works</p>
+        <div id="mapPort"></div>
+        <div id="infoBox">
+            <p> Starting Location <span id="myStartLoc"></span></p>
+            <p> Current Location <span id="myCurrentLoc"></span></p>
+            <p> Locations Changed <span id="myLocCount"></span> times. </p>
+            <p> Last Accuracy <span id="myAccuracy"></span> meters. </p>
+        </div>
+    </div>
 </div>
