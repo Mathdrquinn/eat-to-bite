@@ -21,8 +21,8 @@ Menus List
                     <p>{{menu.name}}</p>
                     <p>{{menu.description}}</p>
                     <p>
-                        <a href=""><button class="HideMenus" ng-click="showMenus=!showMenus">Hide Menus Broken</button></a>
-                        <a href=""><button ng-click="showMenu=!showMenu">Show Dishes</button></a>
+                        <a href=""><button ng-show="!showMenu" ng-click="showMenu=!showMenu">Show Dishes</button></a>
+                        <a href=""><button ng-show="showMenu" ng-click="showMenu=!showMenu">Hide Dishes</button></a>
                     </p>
                     <ul class="no-margin no-decoration sectionList" ng-show="showMenu">
                         <li class="section" ng-repeat="section in menu.sections">
@@ -63,8 +63,10 @@ Menus List
                             </ul>
                         </li>
                     </ul>
+                    <a href=""><button ng-show="showMenu" ng-click="showMenu=!showMenu">Hide Dishes</button></a>
                 </li>
             </ul>
+            <a href=""><button class="HideMenus" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
         </li>
     </ul>
 </div>
