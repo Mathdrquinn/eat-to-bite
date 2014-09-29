@@ -20,6 +20,7 @@
             }
 
             function getRestaurant(restaurantId) {
+                console.log("the service");
                 return $http.get("api/collections/restaurants/" + restaurantId);
             }
 

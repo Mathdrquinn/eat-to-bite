@@ -11,5 +11,11 @@
                 $scope.restaurants = restaurants;
             });
 
+            menusSvc.getRestaurant($routeParams.restaurantId).success(function (restaurant) {
+                console.log("the place");
+                $scope.singleRestaurant = restaurant;
+                console.log("here with: " + $scope.singleRestaurant);
+            });
+
         }]);
 })();

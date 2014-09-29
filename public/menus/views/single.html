@@ -1,24 +1,24 @@
-Menus List
+<h2>{{singleRestaurant.name}}</h2>
 <a href="/">Home</a>
+<a href="#/menus">Return to Menus</a>
 <p>{{work}}</p>
 
 <div id="list" class="sm-padding">
     <ul class="no-margin no-decoration">
-        <li class="place" ng-repeat="place in restaurants">
-            <p>{{place.name}} <span>{{place.style}}</span><span>{{place.menus.length}} menus</span></p>
+        <li class="singleRestaurant">
+            <p>{{singleRestaurant.name}} <span>{{singleRestaurant.style}}</span><span>{{singleRestaurant.menus.length}} menus</span></p>
             <p>
                 <a href=""><button class="seeMore" ng-show="!showMore" ng-click="showMore=!showMore">See More</button></a>
                 <a href=""><button class="seeMore" ng-show="showMore" ng-click="showMore=!showMore">See Less</button></a>
                 <a href=""><button class="seeMenus" ng-show="!showMenus" ng-click="showMenus=!showMenus">Menus</button></a>
                 <a href=""><button class="hideMenus" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
-                <a href="#/restaurantMenu/{{place._id}}"><button class="seeSingle">See This Restaurant</button></a>
             </p>
             <div class="info" ng-show="showMore">
-                <p>{{place.description}}</p>
+                <p>{{singleRestaurant.description}}</p>
                 <p><a href=""><button ng-click="showMore=!showMore">Show Less</button></a></p>
             </div>
             <ul class="no-margin no-decoration menuList" ng-show="showMenus">
-                <li class="menu" ng-repeat="menu in place.menus">
+                <li class="menu" ng-repeat="menu in singleRestaurant.menus">
                     <p>{{menu.name}}</p>
                     <p>{{menu.description}}</p>
                     <p>
