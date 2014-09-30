@@ -1,6 +1,19 @@
-<h2>{{person.name}} seach for an <em>Eat-to-Bite</em></h2>
+<div class="header fixed wide">
+    <h1 class="text-muted inline no-margin v-tall cl-grey navHeight"><em class="med-padding-left lg-margin-top inline">Eat-to-Bite</em></h1>
+    <ul class="inline-children text-right inline float-right">
+        <li class="navButton"><a ng-href="#"><i class="fa fa-home fa-fw fa-lg"></i><span class="menuWords">&nbsp Home</span></a></li>
+        <li class="navButton"><a ng-href="#/posts"><i class="fa fa-newspaper-o fa-lg"></i><span class="menuWords">&nbsp Blog</span></a></li>
+        <li class="navButton active"><a ng-href="#/search"><i class="fa fa-search fa-lg"></i><span class="menuWords">&nbsp Search</span></a></li>
+        <li class="navButton" ng-show="!person.created"><a ng-href="#/createProfile"><i class="fa fa-child fa-lg"></i><span class="menuWords">Create Profile</span></a></li>
+        <li class="navButton" ng-show="person.created"><a ng-href="#/createProfile"><i class="fa fa-pencil-square-o"></i><span class="menuWords">&nbsp Edit Profile</span></a></li>
+        <li class="navButton" ng-show="person.created"><a ng-href="#/profile"><i class="fa fa-user fa-lg"></i><span class="menuWords">&nbsp View Profile</span></a></li>
+        <li class="navButton"><a href="#/menus"><i class="fa fa-cutlery fa-lg"></i><span class="menuWords">&nbsp Menus</span></a></li>
+    </ul>
+</div>
+<h2>{{person.name}} search for an <em>Eat-to-Bite</em></h2>
 <button ng-click="checker.sayFirstRestaurant()">talk</button>
-<button ng-click="checker.sayName()">talk to me</button>
+<button ng-click="checker.getAllergens()">says allergens</button>
+<button ng-click="checker.getDiet()">says diet</button>
 <a href="/">Home</a>
 <p>{{work}}</p>
 
@@ -17,6 +30,7 @@
                     <option value="Cajuan">Cajuan</option>
                     <option value="Chinese">Chinese</option>
                     <option value="Thai">Thai</option>
+                    <option value=""></option>
                 </select>
             </label>
             <label class="formLabel">
@@ -60,6 +74,7 @@
                                         <li class="dish" ng-repeat="dish in section.dishes">
                                             <p>{{dish.name}}</p>
                                             <p>{{dish.description}}</p>
+                                            <button ng-click="checker.findMatches(dish.allergens, dish.diet)">check</button>
                                             <div class="allergens">
                                                 Allergens
                                                 <br>
@@ -101,7 +116,10 @@
     </div>
     <div class="boxRight col-lg-4 col-md-6 col-sm-12">
         <p>lets see if this works</p>
-        <div id="mapPort"></div>
+        <p>{{map.center}}</p>
+        <div id="mapPort">
+            <google-map center="map.center" zoom="map.zoom"></google-map>
+        </div>
         <div id="infoBox">
             <p> Starting Location <span id="myStartLoc"></span></p>
             <p> Current Location <span id="myCurrentLoc"></span></p>

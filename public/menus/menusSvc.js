@@ -3,16 +3,11 @@
 
     angular
         .module('menus')
-        .factory('menusSvc', ['$http', '$rootScope', function ($http, $rootScope) {
+        .factory('menusSvc', ['$http', '$rootScope', '$cookieStore', function ($http, $rootScope, $cookieStore) {
 
-            // public service methods
-            return {
-                getRestaurants: getRestaurants,
-                getRestaurant: getRestaurant,
-                createRestaurant: createRestaurant,
-                editRestaurant: editRestaurant,
-                deleteRestaurant: deleteRestaurant
-            };
+
+            var map = $cookieStore.get("profile").map;
+            var person = $cookieStore.get('profile');
 
             function getRestaurants() {
 
@@ -43,7 +38,19 @@
                 });
             }
 
-
+            // public service methods
+            return {
+                getRestaurants: getRestaurants,
+                getRestaurant: getRestaurant,
+                createRestaurant: createRestaurant,
+                editRestaurant: editRestaurant,
+                deleteRestaurant: deleteRestaurant,
+                person: person,
+                lat: map.center.latitude,
+                lng: map.center.longitude,
+                zoom: map.zoom,
+                map: map
+            };
 
         }]);
 })();

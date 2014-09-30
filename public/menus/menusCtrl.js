@@ -5,6 +5,12 @@
         .module('menus')
         .controller('menusCtrl', ['$scope', '$filter', 'menusSvc', '$location', '$routeParams', '$cookieStore', function ($scope, $filter, menusSvc, $location, $routeParams, $cookieStore) {
 
+            var lat = menusSvc.lat;
+            var lng = menusSvc.lng;
+            var zoom = menusSvc.zoom;
+            var person = menusSvc.person
+            $scope.person = person;
+
             $scope.work = "Angular is here!";
 
             menusSvc.getRestaurants().success(function (restaurants) {
@@ -13,7 +19,6 @@
                 //Defining checker here to ensure that Data is received before evaluation
                 $scope.checker = new Beauty($scope.person, restaurants);
                 $scope.checker.alert();
-                $scope.checker.createMap();
             });
 
             menusSvc.getRestaurant($routeParams.restaurantId).success(function (restaurant) {
@@ -40,84 +45,65 @@
                 this.alert = function () {
                     if(!person.created) {alert("You have not created a profile, please do so to personalize your searches");}
                 }
-                this.createMap = function() {
-                    this.getCoords()
+                this.findMatches = function(dishesAllergens, dishesDiets) {
+                    this.allergic = this.getAllergens();
+                    this.diet = this.getDiet()
+                    this.allergic = this.matchAllergies(this.allergic, dishesAllergens);
+                    this.diet = this.matchDiets(this.diet, dishesDiets);
+                    console.log ("allergic")
+                    console.log("diet");
                 }
-                this.getCoords = function () {
-                    this.defineGeo();
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(this.successCallback, this.errorCallback);
+                this.getAllergens = function () {
+                    var x = person.allergens;
+                    var z = {}
+                    for (var prop in x) {
+                        if (x[prop]) {
+                            z[prop] = x[prop]
+                            console.log(prop + " is true")
+                        }
                     }
-                    else {
-                        this.myMap.text('HTML5 geolocation is not supported on your browser');
+                    console.log("z: " + z.nuts + " " + z[nuts] + " " + z);
+                    return z;
+                }
+                this.getDiet = function () {
+                    var y = person.diet;
+                    var z = {};
+                    for (var prop in y) {
+                        if (y[prop]) {
+                            z[prop] = y[prop]
+                            console.log(prop + " is true")
+                        }
+                    }
+                    console.log("z: " + z.carb);
+                    return z;
+                }
+                this.matchAllergies = function (aPObj, aObj) {
+                    for(var prop in aPObj) {
+                        if (aObj[prop]) {alert("warning you are allergic to: " + prop + ", do not eat")}
+
                     }
 
                 }
-                this.defineGeo = function () {
-                    this.first = true;
-                    this.myCoordList = [];
-                    this.myGMap = null;
-                    this.myTrail = null;
-                    this.myMap = angular.element('mapPort');
-                    this.myStartLoc = angular.element('myStartLoc');
-                    this.myCurrentLoc = angular.element('myCurrentLoc');
-                    this.myLocCount = angular.element('myLocCount');
-                    this.myAccuracy = angular.element('myAccuracy');
-                }
-                //Success Function
-                this.successCallback = function(position) {
-                    console.log('begin success');
+                this.matchDiets = function (dPObj, dObj) {
+                    for(var prop in dPObj) {
+                        if (dObj[prop]) {alert("warning this is against your: " + prop + "diet,  do not eat")}
 
-//                    this.myMap.style.width = '50%';
-//                    this.myMap.style.height = '480px';
-
-                    console.log('set coords');
-                    this.myCoords = new google.maps.LatLng (
-                        position.coords.latitude,
-                        position.coords.longitude
-                    );
-                    console.log(this.myCoords);
-
-                    console.log('create map');
-                    this.map = new google.maps.Map (
-                        this.myMap,
-                        { zoom: 15,
-                            center: this.myCoords,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        });
-                    console.log(this.map);
-
-                    console.log('put marker on map');
-                    this.marker = new google.maps.Marker({
-                        position: this.myCoords,
-                        map: this.map
-                    });
-                    console.log(marker);
-
-                    console.log('create radius');
-                    this.accuracyRadius = new google.maps.Circle ({
-                        map: map,
-                        radius: position.coords.accuracy,
-                        fillColor: '#00AA00'
-                    });
-                    console.log(this.accuracyRadius);
-
-                    console.log('bind radius');
-                    this.accuracyRadius.bindTo('center', this.marker, 'position');
-
-                }
-                //Error Callback
-                this.errorCallback = function (positionError) {
-                    var msg = {
-                        1: 'Permission to use geolocation has been denied',
-                        2: 'Your position could not be determined',
-                        3: 'The operation has timed out'
-                    };
-                    this.myMap.text(msg[positionError.code]);
+                    }
                 }
             };
-
             $scope.checker = new Beauty($scope.person, $scope.restaurants);
+
+            console.log('creating center');
+            $scope.map = {
+                center: {
+                    latitude: 32.8444444,
+                    longitude: -79.9
+                },
+                zoom: 11
+            };
+
+            //$scope.map = menusSvc.map;
+
 
         }]);
 })();

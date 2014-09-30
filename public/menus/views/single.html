@@ -1,6 +1,15 @@
-<h2>{{singleRestaurant.name}}</h2>
-<a href="/">Home</a>
-<a href="#/menus">Return to Menus</a>
+<div class="header fixed wide">
+    <h1 class="text-muted inline no-margin v-tall cl-grey navHeight"><em class="med-padding-left lg-margin-top inline">{{singleRestaurant.name}}</em></h1>
+    <ul class="inline-children text-right inline float-right">
+        <li class="navButton"><a ng-href="#"><i class="fa fa-home fa-fw fa-lg"></i><span class="menuWords">&nbsp Home</span></a></li>
+        <li class="navButton"><a ng-href="#/posts"><i class="fa fa-newspaper-o fa-lg"></i><span class="menuWords">&nbsp Blog</span></a></li>
+        <li class="navButton"><a ng-href="#/search"><i class="fa fa-search fa-lg"></i><span class="menuWords">&nbsp Search</span></a></li>
+        <li class="navButton" ng-show="!person.created"><a ng-href="#/createProfile"><i class="fa fa-child fa-lg"></i><span class="menuWords">Create Profile</span></a></li>
+        <li class="navButton active" ng-show="person.created"><a ng-href="#/createProfile"><i class="fa fa-pencil-square-o"></i><span class="menuWords">&nbsp Edit Profile</span></a></li>
+        <li class="navButton" ng-show="person.created"><a ng-href="#/profile"><i class="fa fa-user fa-lg"></i><span class="menuWords">&nbsp View Profile</span></a></li>
+        <li class="navButton"><a href="#/menus"><i class="fa fa-cutlery fa-lg"></i><span class="menuWords">&nbsp Menus</span></a></li>
+    </ul>
+</div>
 <p>{{work}}</p>
 
 <div id="list" class="sm-padding">

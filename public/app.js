@@ -4,6 +4,7 @@
     angular.module('eat-to-bite',[
     "ngRoute",
     "ngCookies",
+    "google-maps",
     "posts",
     "profile",
     "menus"
