@@ -10,7 +10,6 @@
             var person = $cookieStore.get('profile');
 
             function getRestaurants() {
-
                 return $http.get("api/collections/restaurants");
             }
 
@@ -37,6 +36,8 @@
                     $rootScope.$broadcast("restaurant:deleted");
                 });
             }
+
+
 
             // public service methods
             return {

@@ -14,7 +14,12 @@
             $scope.work = "Angular is here!";
 
             menusSvc.getRestaurants().success(function (restaurants) {
-                $scope.restaurants = restaurants;
+                console.log(restaurants['0']);
+//                var poop = lookAtEach(restaurants);
+//                console.log(poop);
+//                $scope.restaurants = restaurants;
+//                console.log(restaurants);
+                $scope.restaurants = lookAtEach(restaurants);
 
                 //Defining checker here to ensure that Data is received before evaluation
                 $scope.checker = new Beauty($scope.person, restaurants);
@@ -35,7 +40,7 @@
             $scope.person = $cookieStore.get("profile");
 
             $scope.safe = function (x,y) {
-                if(x === y) {return true;}
+                if(x && y) {return true;}
                 else{return false;}
             }
 
@@ -67,7 +72,7 @@
                             console.log(prop + " is true")
                         }
                     }
-                    console.log("z: " + z.nuts + " " + z[nuts] + " " + z);
+//                    console.log("z: " + z.nuts + " " + z[nuts] + " " + z);
                     return z;
                 }
                 this.getDiet = function () {
@@ -79,7 +84,7 @@
                             console.log(prop + " is true")
                         }
                     }
-                    console.log("z: " + z.carb);
+//                    console.log("z: " + z.carb);
                     return z;
                 }
                 this.matchAllergies = function (aPObj, aDObj) {
@@ -107,7 +112,96 @@
             };
 
             //$scope.map = menusSvc.map;
+            //var lookAtEach = function ($scope.restaurants.restaurant.name);
+            var lookAtEach = function(obj) {
+                for(var prop in obj) {
+                    var newRestaurant = lookAtRest(obj[prop])
+                    obj[prop] = newRestaurant;
+                }
+                return obj;
+            };
+            var lookAtRest = function (rest) {
+                for (var j = 0; j < rest.menus.length; j++) {
+                    var newMenu = lookAtMenu(rest.menus[j])
+                    rest.menus[j] = newMenu;
+                    console.log("here is the restaurant");
+                    console.log(rest);
+                }
+                return rest;
+            };
+            var lookAtMenu = function (menu) {
+                for (var k = 0; k < menu.sections.length; k++) {
+                    var newSection = lookAtSection(menu.sections[k])
+                    menu.sections[k] = newSection;
+                }
+                return menu;
+            };
+            var lookAtSection = function (sect) {
+                for (var m = 0; m < sect.dishes.length; m++) {
+                    var dietResults = findMatches(sect.dishes[m].allergens, sect.dishes[m].diet).diet;
+                    var allergenResults = findMatches(sect.dishes[m].allergens, sect.dishes[m].diet).allergens;
+                    console.log('For ' + sect.dishes[m].name);
+                    console.log(allergenResults);
+                    console.log(dietResults);
+                    sect.dishes[m].matchedAllergens = allergenResults;
+                    sect.dishes[m].matchedDiet = dietResults;
+                }
+                console.log("here is the section");
+                console.log(sect);
+                return sect;
+            }
+            var findMatches = function(dishesAllergens, dishesDiets) {
+                var allergic = getAllergens();
+                var diet = getDiet()
+                var allergic = matchAllergies(allergic, dishesAllergens);
+                var diet = matchDiets(diet, dishesDiets);
+                return {
+                    allergens: allergic,
+                    diet: diet
+                }
+            };
+            var getAllergens = function () {
+                var x = $scope.person.allergens;
+                var z = {}
+                for (var prop in x) {
+                    if (x[prop]) {
+                        z[prop] = x[prop]
+                    }
+                }
+//                    console.log("z: " + z.nuts + " " + z[nuts] + " " + z);
+                return z;
+            };
+            var getDiet = function () {
+                var y = $scope.person.diet;
+                var z = {};
+                for (var prop in y) {
+                    if (y[prop]) {
+                        z[prop] = y[prop]
+                    }
+                }
+//                    console.log("z: " + z.carb);
+                return z;
+            };
+            var matchAllergies = function (aPObj, aDObj) {
+                var allergenMatches = {};
+                for(var prop in aPObj) {
+                    if (aDObj[prop]) {
+                        allergenMatches[prop] = true
+                    }
+                }
+                return allergenMatches;
 
+            };
+            var matchDiets = function (dPObj, dObj) {
+                var dietMatches = []
+                for(var prop in dPObj) {
+                    if (dObj[prop]) {
+                    dietMatches.push[prop];
+                    }
+
+                }
+                return dietMatches;
+            };
 
         }]);
 })();

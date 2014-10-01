@@ -104,24 +104,15 @@
                                                                 <a class="btn bg-red cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop2=!drop2" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
                                                                 <ul class="dropdown-menu" ng-show="drop2">
-                                                                    <span ng-init="result=safe(dish.allergens.nuts, person.allergens.nuts)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Nuts</a></li>
-                                                                    <span ng-init="result=safe(dish.allergens.treeNuts, person.allergens.treeNuts)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Tree Nuts</a></li>
-                                                                    <span ng-init="result=safe(dish.allergens.milk, person.allergens.milk)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Milk</a></li>
-                                                                    <span ng-init="result=safe(dish.allergens.dairy, person.dairy.soy)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Dairy</a></li>
-                                                                    <span ng-init="result=safe(dish.allergens.glucose, person.allergens.glucose)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Wheat/Glucose</a></li>
-                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Eggs</a></li>
-                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Fish</a></li>
-                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Shellfish</a></li>
-                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Soy</a></li>
+                                                                    <li ng-show="allergens.nutsResult"><a href=""><i class="fa fa-flag fa-fw"></i> Nuts</a></li>
+                                                                    <li ng-show="allergens.treeNutsResult"><a href=""><i class="fa fa-flag fa-fw"></i> Tree Nuts</a></li>
+                                                                    <li ng-show="allergens.milkResult"><a href=""><i class="fa fa-flag fa-fw"></i> Milk</a></li>
+                                                                    <li ng-show="allergens.dairyResult"><a href=""><i class="fa fa-flag fa-fw"></i> Dairy</a></li>
+                                                                    <li ng-show="allergens.glucoseResult"><a href=""><i class="fa fa-flag fa-fw"></i> Wheat/Glucose</a></li>
+                                                                    <li ng-show="allergens.eggsResult"><a href=""><i class="fa fa-flag fa-fw"></i> Eggs</a></li>
+                                                                    <li ng-show="allergens.fishResult"><a href=""><i class="fa fa-flag fa-fw"></i> Fish</a></li>
+                                                                    <li ng-show="allergens.shellfishResult"><a href=""><i class="fa fa-flag fa-fw"></i> Shellfish</a></li>
+                                                                    <li ng-show="allergens.soyResult"><a href=""><i class="fa fa-flag fa-fw"></i> Soy</a></li>
                                                                 </ul>
                                                             </div>
                                                             </p>
