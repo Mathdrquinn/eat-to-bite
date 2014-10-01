@@ -1,156 +1,157 @@
-<div class="header fixed wide">
-    <h1 class="text-muted inline no-margin v-tall cl-grey navHeight"><em class="med-padding-left lg-margin-top inline">Eat-to-Bite</em></h1>
-    <ul class="inline-children text-right inline float-right">
-        <li class="navButton"><a ng-href="#"><i class="fa fa-home fa-fw fa-lg"></i><span class="menuWords">&nbsp Home</span></a></li>
-        <li class="navButton"><a ng-href="#/posts"><i class="fa fa-newspaper-o fa-lg"></i><span class="menuWords">&nbsp Blog</span></a></li>
-        <li class="navButton"><a ng-href="#/search"><i class="fa fa-search fa-lg"></i><span class="menuWords">&nbsp Search</span></a></li>
-        <li class="navButton" ng-show="!person.created"><a ng-href="#/createProfile"><i class="fa fa-child fa-lg"></i><span class="menuWords">Create Profile</span></a></li>
-        <li class="navButton active" ng-show="person.created"><a ng-href="#/createProfile"><i class="fa fa-pencil-square-o"></i><span class="menuWords">&nbsp Edit Profile</span></a></li>
-        <li class="navButton" ng-show="person.created"><a ng-href="#/profile"><i class="fa fa-user fa-lg"></i><span class="menuWords">&nbsp View Profile</span></a></li>
-        <li class="navButton"><a href="#/menus"><i class="fa fa-cutlery fa-lg"></i><span class="menuWords">&nbsp Menus</span></a></li>
-    </ul>
-</div>
-<form action="" ng-submit="makeProfile(person)" class="row head-margin bg-blue cl-grey medium lg-padding-left block">
-    <div class="formTop med-padding bg-blue col-lg-3 col-md-3 col-sm-5 col-xs-12">
-        <div class="input-group margin-bottom-sm bg-blue">
-            <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-            <input class="form-control bg-blue wideInput inline" type="text" placeholder="First Name" ng-model="person.firstName" required="true">
-        </div>
-        <div class="input-group margin-bottom-sm bg-blue">
-            <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-            <input class="form-control bg-blue wideInput" type="text" placeholder="Last Name" ng-model="person.lastName" required="true">
-        </div>
-        <div class="input-group margin-bottom-sm bg-blue">
-            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-            <input class="form-control bg-blue wideInput" type="text" placeholder="Email Address" ng-model="person.email" required="true">
-        </div>
-        <div class="input-group margin-bottom-sm bg-blue">
-            <span class="input-group-addon"><i class="fa fa-birthday-cake fa-fw"></i></span>
-            <input class="form-control bg-blue wideInput inline" type="date" placeholder="First Name" ng-model="person.dob" required="true">
-        </div>
-        <div class="input-group margin-bottom-sm bg-blue">
-            <span class="input-group-addon"><i class="fa fa-camera fa-fw"></i></span>
-            <input class="form-control bg-blue wideInput inline" type="text" placeholder="Image Url" ng-model="person.avatar" required="true">
-        </div>
-        <i class="fa fa-spinner fa-spin" ng-show="!focus && focus2"></i>
+<div class="block no-margin no-padding home-back  sit-up full-height wide">
+    <div class="header absolute-top wide">
+        <h1 class="text-muted inline no-margin v-tall cl-grey navHeight"><a ng-href="#" class="blank-anchor"><span class="theFont vv-tall lg-padding-left"><span class="cl-green-hover">Eat</span>-<span class="cl-blue-hover">to</span>-<span class="cl-orange-hover">Bite</span></span></a></h1>
+        <ul class="inline-children text-right inline float-right">
+            <li class="navButton"><a ng-href="#/posts"><i class="fa fa-newspaper-o fa-lg"></i><span class="menuWords">&nbsp Blog</span></a></li>
+            <li class="navButton"><a ng-href="#/search"><i class="fa fa-search fa-lg"></i><span class="menuWords">&nbsp Search</span></a></li>
+            <li class="navButton" ng-show="!person.created"><a ng-href="#/createProfile"><i class="fa fa-child fa-lg"></i><span class="menuWords">Create Profile</span></a></li>
+            <li class="navButton active" ng-show="person.created"><a ng-href="#/createProfile"><i class="fa fa-pencil-square-o"></i><span class="menuWords">&nbsp Edit Profile</span></a></li>
+            <li class="navButton" ng-show="person.created"><a ng-href="#/profile"><i class="fa fa-user fa-lg"></i><span class="menuWords">&nbsp View Profile</span></a></li>
+            <li class="navButton"><a href="#/menus"><i class="fa fa-cutlery fa-lg"></i><span class="menuWords">&nbsp Menus</span></a></li>
+        </ul>
     </div>
-    <div class="formBottom bg-blue col-lg-9 col-md-9 col-sm-7 col-xs-12 lg-padding-left text-center med-padding row">
-        <label for="preferences"> Preferred Style: &nbsp
-            <select name="preference" id="preferences" ng-model="person.likes">
-                <option ng-click="american=!american" value="American">American</option>
-                <option ng-click="southern=!southern" value="Southern">Southern</option>
-                <option ng-click="seafood=!seafood" value="Seafood">Seafood</option>
-                <option ng-click="baked=!baked" value="bakedGoods">Baked Goods</option>
-                <option ng-click="cajuan=!cajuan" value="Cajuan">Cajuan</option>
-                <option ng-click="chinese=!chinese" value="Chinese">Chinese</option>
-                <option ng-click="thai=!thai" value="Thai">Thai</option>
-            </select>
-        </label> &nbsp &nbsp &nbsp &nbsp
-        <label for="dislikes"> Aversions: &nbsp
-            <select name="dislikes" id="dislikes" ng-model="person.dislikes">
-                <option ng-hide="american" value="American">American</option>
-                <option ng-hide="southern" value="Southern">Southern</option>
-                <option ng-hide="seafood" value="Seafood">Seafood</option>
-                <option ng-hide="baked" value="bakedGoods">Baked Goods</option>
-                <option ng-hide="cajuan" value="Cajuan">Cajuan</option>
-                <option ng-hide="chinese" value="Chinese">Chinese</option>
-                <option ng-hide="thai" value="Thai">Thai</option>
-            </select>
-        </label>
-        <hr class="no-margin"/>
-        <div class="formAllergens col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left lg-margin-top">
-            <label> Allergies
-                <hr/>
-                <input type="checkbox" name="nuts" id="nuts" data-ng-model="person.allergens.nuts"/> Nuts
-                <input type="checkbox" name="treeNuts" id="treeNuts" data-ng-model="person.allergens.treeNuts"/> Tree Nuts
-                <input type="checkbox" name="milk" id="milk" data-ng-model="person.allergens.milk"/> Milk
-                <input type="checkbox" name="lactose" id="dairy" data-ng-model="person.allergens.dairy"/> Dairy
-                <br/>
-                <input type="checkbox" name="glucose" id="glucose" data-ng-model="person.allergens.glucose"/> Wheat/Glucose
-                <input type="checkbox" name="eggs" id="eggs" data-ng-model="person.allergens.eggs"/> Eggs
-                <input type="checkbox" name="fish" id="fish" data-ng-model="person.allergens.fish"/> Fish
-                <br/>
-                <input type="checkbox" name="shellfish" id="shellfish" data-ng-model="person.allergens.shellfish"/> Shellfish
-                <input type="checkbox" name="soy" id="soy" data-ng-model="person.allergens.soy"/> Soy
-            </label>
+    <form action="" ng-submit="makeProfile(person)" class="row xlg-padding head-padding bg-black cl-grey medium lg-padding-left block">
+        <div class="formTop med-padding col-lg-3 col-md-3 col-sm-5 col-xs-12 corner">
+            <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon corner"><i class="fa fa-user fa-fw"></i></span>
+                <input class="form-control  wideInput inline corner" type="text" placeholder="First Name" ng-model="person.firstName" required="true">
+            </div>
+            <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon corner"><i class="fa fa-user fa-fw"></i></span>
+                <input class="form-control  wideInput corner" type="text" placeholder="Last Name" ng-model="person.lastName" required="true">
+            </div>
+            <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon corner"><i class="fa fa-envelope-o fa-fw"></i></span>
+                <input class="form-control  wideInput corner" type="text" placeholder="Email Address" ng-model="person.email" required="true">
+            </div>
+            <div class="input-group margin-bottom-sm ">
+                <span class="input-group-addon corner"><i class="fa fa-birthday-cake fa-fw"></i></span>
+                <input class="form-control  wideInput inline corner" type="date" placeholder="First Name" ng-model="person.dob" required="true">
+            </div>
+            <div class="input-group margin-bottom-sm ">
+                <span class="input-group-addon corner"><i class="fa fa-camera fa-fw"></i></span>
+                <input class="form-control  wideInput inline corner" type="text" placeholder="Image Url" ng-model="person.avatar" required="true">
+            </div>
+            <i class="fa fa-spinner fa-spin" ng-show="!focus && focus2"></i>
         </div>
-        <div class="formDiet col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left lg-margin-top">
-            <label> Dietary Needs
-                <hr/>
-                <input type="checkbox" name="veagan" id="veagan" data-ng-model="person.diet.veagan"/> Veagan
-                <input type="checkbox" name="geggie" id="veggie" data-ng-model="person.diet.veggie"/> Vegetarian
-                <input type="checkbox" name="pescatarian" id="pescatarian" data-ng-model="person.diet.pescatarian"/> Pescatarian
-                <br/>
-                <input type="checkbox" name="polloPesca" id="polloPesca" data-ng-model="person.diet.polloPesca"/>Pollo-pescetarian
-                <input type="checkbox" name="carbFre" id="carbFree" data-ng-model="person.diet.carbFree"/> Carb Free
-                <input type="checkbox" name="carb" id="carb" data-ng-model="person.diet.carb"/> Low Carb
-                <br/>
-                <input type="checkbox" name="protein" id="protein" data-ng-model="person.diet.protein"/> High Protein
-                <input type="checkbox" name="highFructose" id="highFructose" data-ng-model="person.diet.highFructose"/> Contains No High Fructose Corn Syrup
-                <br/>
-                <input type="checkbox" name="organic" id="organic" data-ng-model="person.diet.organic"/> Organic
-                <input type="checkbox" name="gmo" id="gmo" data-ng-model="person.diet.gmo"/> Free of GMO's
+        <div class="formBottom  col-lg-9 col-md-9 col-sm-7 col-xs-12 lg-padding-left text-center med-padding row">
+            <label for="preferences"> Preferred Style: &nbsp
+                <select name="preference" id="preferences" ng-model="person.likes">
+                    <option ng-click="american=!american" value="American">American</option>
+                    <option ng-click="southern=!southern" value="Southern">Southern</option>
+                    <option ng-click="seafood=!seafood" value="Seafood">Seafood</option>
+                    <option ng-click="baked=!baked" value="bakedGoods">Baked Goods</option>
+                    <option ng-click="cajuan=!cajuan" value="Cajuan">Cajuan</option>
+                    <option ng-click="chinese=!chinese" value="Chinese">Chinese</option>
+                    <option ng-click="thai=!thai" value="Thai">Thai</option>
+                </select>
+            </label> &nbsp &nbsp &nbsp &nbsp
+            <label for="dislikes"> Aversions: &nbsp
+                <select name="dislikes" id="dislikes" ng-model="person.dislikes">
+                    <option ng-hide="american" value="American">American</option>
+                    <option ng-hide="southern" value="Southern">Southern</option>
+                    <option ng-hide="seafood" value="Seafood">Seafood</option>
+                    <option ng-hide="baked" value="bakedGoods">Baked Goods</option>
+                    <option ng-hide="cajuan" value="Cajuan">Cajuan</option>
+                    <option ng-hide="chinese" value="Chinese">Chinese</option>
+                    <option ng-hide="thai" value="Thai">Thai</option>
+                </select>
             </label>
+            <hr class="no-margin"/>
+            <div class="formAllergens col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left lg-margin-top">
+                <label> Allergies
+                    <hr/>
+                    <input type="checkbox" name="nuts" id="nuts" data-ng-model="person.allergens.nuts"/> Nuts
+                    <input type="checkbox" name="treeNuts" id="treeNuts" data-ng-model="person.allergens.treeNuts"/> Tree Nuts
+                    <input type="checkbox" name="milk" id="milk" data-ng-model="person.allergens.milk"/> Milk
+                    <input type="checkbox" name="lactose" id="dairy" data-ng-model="person.allergens.dairy"/> Dairy
+                    <br/>
+                    <input type="checkbox" name="glucose" id="glucose" data-ng-model="person.allergens.glucose"/> Wheat/Glucose
+                    <input type="checkbox" name="eggs" id="eggs" data-ng-model="person.allergens.eggs"/> Eggs
+                    <input type="checkbox" name="fish" id="fish" data-ng-model="person.allergens.fish"/> Fish
+                    <br/>
+                    <input type="checkbox" name="shellfish" id="shellfish" data-ng-model="person.allergens.shellfish"/> Shellfish
+                    <input type="checkbox" name="soy" id="soy" data-ng-model="person.allergens.soy"/> Soy
+                </label>
+            </div>
+            <div class="formDiet col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left lg-margin-top">
+                <label> Dietary Needs
+                    <hr/>
+                    <input type="checkbox" name="veagan" id="veagan" data-ng-model="person.diet.veagan"/> Veagan
+                    <input type="checkbox" name="geggie" id="veggie" data-ng-model="person.diet.veggie"/> Vegetarian
+                    <input type="checkbox" name="pescatarian" id="pescatarian" data-ng-model="person.diet.pescatarian"/> Pescatarian
+                    <br/>
+                    <input type="checkbox" name="polloPesca" id="polloPesca" data-ng-model="person.diet.polloPesca"/>Pollo-pescetarian
+                    <input type="checkbox" name="carbFre" id="carbFree" data-ng-model="person.diet.carbFree"/> Carb Free
+                    <input type="checkbox" name="carb" id="carb" data-ng-model="person.diet.carb"/> Low Carb
+                    <br/>
+                    <input type="checkbox" name="protein" id="protein" data-ng-model="person.diet.protein"/> High Protein
+                    <input type="checkbox" name="highFructose" id="highFructose" data-ng-model="person.diet.highFructose"/> Contains No High Fructose Corn Syrup
+                    <br/>
+                    <input type="checkbox" name="organic" id="organic" data-ng-model="person.diet.organic"/> Organic
+                    <input type="checkbox" name="gmo" id="gmo" data-ng-model="person.diet.gmo"/> Free of GMO's
+                </label>
+            </div>
         </div>
-    </div>
-    <button class="button absolute-bottom-right" type="submit">Submit</button>
-</form>
+        <button class="button absolute-bottom-right" type="submit">Submit</button>
+    </form>
 
-<div class="row key bg-yellow med-padding-top cl-black med-margin-top">
-    <h3 class="no-margin lg-margin-left cl-black">Key</h3>
-    <hr class="no-margin cl-black bg-black"/>
-    <div class="keyAllergens col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
-        <p>Contains Allergens that do no harm:</p>
-        <p>
-        <div class="btn-group open">
-            <a class="btn bg-blue cl-grey" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
-            <a class="btn bg-blue cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop=!drop" href="">
-                <span class="fa fa-caret-down"></span></a>
-            <ul class="dropdown-menu" ng-show="drop">
-                <li><a href=""><i class="fa fa-h-square fa-fw"></i> Soy</a></li>
-                <li><a href=""><i class="fa fa-h-square fa-fw"></i> Eggs</a></li>
-                <li><a href=""><i class="fa fa-h-square fa-fw"></i> Milk</a></li>
-            </ul>
+    <div class="row key bg-black med-padding-top cl-grey med-margin-top">
+        <h3 class="no-margin lg-margin-left cl-grey text-shadow">Key</h3>
+        <hr class="no-margin cl-black "/>
+        <div class="keyAllergens col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
+            <p>Contains Allergens that do no harm:</p>
+            <p>
+            <div class="btn-group open">
+                <a class="btn bg-blue" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
+                <a class="btn bg-blue dropdown-toggle" data-toggle="dropdown" ng-click="drop=!drop" href="">
+                    <span class="fa fa-caret-down"></span></a>
+                <ul class="dropdown-menu" ng-show="drop">
+                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> Soy</a></li>
+                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> Eggs</a></li>
+                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> Milk</a></li>
+                </ul>
+            </div>
+            </p>
+            <p>Contains Allergens that <em>DO</em> harm:</p>
+            <p>
+            <div class="btn-group open bg-red cl-grey">
+                <a class="btn bg-red cl-grey" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
+                <a class="btn bg-red cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop2=!drop2" href="">
+                    <span class="fa fa-caret-down"></span></a>
+                <ul class="dropdown-menu" ng-show="drop2">
+                    <li><a href=""><i class="fa fa-flag fa-fw"></i> Nuts</a></li>
+                    <li><a href=""><i class="fa fa-flag fa-fw"></i> Fish</a></li>
+                </ul>
+            </div>
+            </p>
         </div>
-        </p>
-        <p>Contains Allergens that <em>DO</em> harm:</p>
-        <p>
-        <div class="btn-group open bg-red cl-grey">
-            <a class="btn bg-red cl-grey" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
-            <a class="btn bg-red cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop2=!drop2" href="">
-                <span class="fa fa-caret-down"></span></a>
-            <ul class="dropdown-menu" ng-show="drop2">
-                <li><a href=""><i class="fa fa-flag fa-fw"></i> Nuts</a></li>
-                <li><a href=""><i class="fa fa-flag fa-fw"></i> Fish</a></li>
-            </ul>
+        <div class="keyDiet col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
+            <p>Meets superflouous dietary conditions:</p>
+            <p>
+            <div class="btn-group open">
+                <a class="btn bg-orange cl-grey" href=""><i class="fa fa-user fa-fw"></i> Qualities</a>
+                <a class="btn bg-orange cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop3=!drop3" href="">
+                    <span class="fa fa-caret-down"></span></a>
+                <ul class="dropdown-menu" ng-show="drop3">
+                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> High Protien</a></li>
+                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> GMO Free</a></li>
+                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> Veagan</a></li>
+                </ul>
+            </div>
+            </p>
+            <p>Meets <em>ALL</em>&nbsp Dietary Conditions</p>
+            <p>
+            <div class="btn-group open bg-green cl-grey">
+                <a class="btn bg-green cl-grey" href=""><i class="fa fa-user fa-fw"></i> Qualities</a>
+                <a class="btn bg-green cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop4=!drop4" href="">
+                    <span class="fa fa-caret-down"></span></a>
+                <ul class="dropdown-menu" ng-show="drop4">
+                    <li><a href=""><i class="fa fa-check-circle-o fa-fw"></i> Low Carb</a></li>
+                    <li><a href=""><i class="fa fa-check-circle-o fa-fw"></i> Organic</a></li>
+                </ul>
+            </div>
+            </p>
         </div>
-        </p>
-    </div>
-    <div class="keyDiet col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
-        <p>Meets superflouous dietary conditions:</p>
-        <p>
-        <div class="btn-group open">
-            <a class="btn bg-orange cl-grey" href=""><i class="fa fa-user fa-fw"></i> Qualities</a>
-            <a class="btn bg-orange cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop3=!drop3" href="">
-                <span class="fa fa-caret-down"></span></a>
-            <ul class="dropdown-menu" ng-show="drop3">
-                <li><a href=""><i class="fa fa-pencil fa-fw"></i> High Protien</a></li>
-                <li><a href=""><i class="fa fa-trash-o fa-fw"></i> GMO Free</a></li>
-                <li><a href=""><i class="fa fa-ban fa-fw"></i> Veagan</a></li>
-            </ul>
-        </div>
-        </p>
-        <p>Meets <em>ALL</em>&nbsp Dietary Conditions</p>
-        <p>
-        <div class="btn-group open bg-green cl-grey">
-            <a class="btn bg-green cl-grey" href=""><i class="fa fa-user fa-fw"></i> Qualities</a>
-            <a class="btn bg-green cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop4=!drop4" href="">
-                <span class="fa fa-caret-down"></span></a>
-            <ul class="dropdown-menu" ng-show="drop4">
-                <li><a href=""><i class="fa fa-check-circle-o fa-fw"></i> Low Carb</a></li>
-                <li><a href=""><i class="fa fa-check-circle-o fa-fw"></i> Organic</a></li>
-            </ul>
-        </div>
-        </p>
     </div>
 </div>

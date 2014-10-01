@@ -1,7 +1,6 @@
-<div class="header fixed wide">
-    <h1 class="text-muted inline no-margin v-tall cl-grey navHeight"><em class="med-padding-left lg-margin-top inline">Eat-to-Bite</em></h1>
+<div class="header absolute-top wide">
+    <h1 class="text-muted inline no-margin v-tall cl-grey navHeight"><a ng-href="#" class="blank-anchor"><span class="theFont vv-tall lg-padding-left"><span class="cl-green-hover">Eat</span>-<span class="cl-blue-hover">to</span>-<span class="cl-orange-hover">Bite</span></span></a></h1>
     <ul class="inline-children text-right inline float-right">
-        <li class="navButton active sm-padding"><a ng-href="#"><i class="fa fa-home fa-fw fa-lg"></i><span class="menuWords">&nbsp Home</span></a></li>
         <li class="navButton"><a ng-href="#/posts"><i class="fa fa-newspaper-o fa-lg"></i><span class="menuWords">&nbsp Blog</span></a></li>
         <li class="navButton"><a ng-href="#/search"><i class="fa fa-search fa-lg"></i><span class="menuWords">&nbsp Search</span></a></li>
         <li class="navButton" ng-show="!person.created"><a ng-href="#/createProfile"><i class="fa fa-child fa-lg"></i><span class="menuWords">Create Profile</span></a></li>
@@ -9,30 +8,37 @@
         <li class="navButton" ng-show="person.created"><a ng-href="#/profile"><i class="fa fa-user fa-lg"></i><span class="menuWords">&nbsp View Profile</span></a></li>
         <li class="navButton"><a href="#/menus"><i class="fa fa-cutlery fa-lg"></i><span class="menuWords">&nbsp Menus</span></a></li>
     </ul>
-
 </div>
 
 <div style="background-image: url({{newestPost.dishImage}})" class="stretch row wide no-margin no-padding">
     <div class="med-padding col-lg-8 col-md-7 col-sm-6 med-margin-top lg-padding-left">
-        <h2 class="no-margin">{{newestPost.restaurant}}'s {{newestPost.dishName}}</h2>
-        <button class="button"><a class="btn btn-lg btn-success" ng-href="#/posts/{{newestPost._id}}">Go to blog!</a></button>
+        <article class="newestDescription dishHead col-lg-5 col-md-8 col-sm-8 col-xs-6">
+            <h2 class="no-margin cl-grey text-shadow">{{newestPost.restaurant}}'s {{newestPost.dishName}}</h2>
+            <span class="boxTop">{{newestPost.dishName}}</span>
+            <hr/>
+            <span class="boxMiddle">{{newestPost.description}}</span>
+            <br/>
+            <!--<span class="boxBottom"><a href="#/posts">See this dish and others from {{newestPost.restaurant}} &ndash;&gt;</a></span>-->
+            <button class="button block main-button"><a class="btn btn-lg btn-success sm-padding med" ng-href="#/posts/{{newestPost._id}}">Go to blog!</a></button>
+        </article>
     </div>
-    <article class="newestDescription col-lg-4 col-md-5 col-sm-6 med-margin-top">
-        <span class="boxTop">{{newestPost.dishName}}</span>
-        <hr/>
-        <span class="boxMiddle">{{newestPost.description}}</span>
-        <br/>
-        <span class="boxBottom"><a href="#/posts">See this dish and others from {{newestPost.restaurant}} --></a></span>
-    </article>
+    <!--<article class="newestDescription col-lg-4 col-md-5 col-sm-6 med-margin-top">-->
+        <!--<span class="boxTop">{{newestPost.dishName}}</span>-->
+        <!--<hr/>-->
+        <!--<span class="boxMiddle">{{newestPost.description}}</span>-->
+        <!--<br/>-->
+        <!--<span class="boxBottom"><a href="#/posts">See this dish and others from {{newestPost.restaurant}} </a></span>-->
+    <!--</article>-->
 </div>
-<div class="ovrflw-x wide no-margin no-padding med-margin-top">
+<div class="ovrflw-x wide no-margin no-padding">
     <div class="newsHold">
-        <div ng-repeat="post in posts" ng-if="$index>-1" class="oldLinks col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <button class="button absolute-top-right"><a href="#/posts/{{post._id}}"><i class="fa fa-eye f-lg"></i></a></button>
-            <h4><a href="#/posts/{{post._id}}">{{post.dishName}}</a></h4>
-            <p>by</p>
-            <h5 class="">{{post.restaurant}}</h5>
-            <img src="{{post.dishImage}}" style="height: 150px" alt="Picture of {{post.dishName}}"/>
-        </div>
+            <div ng-repeat="post in posts" ng-if="$index>-1" class="oldLinks col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding" style="background-image: url({{post.dishImage}}); background-size: cover">
+                <div class="filter-black wide super-high">
+                    <button class="buttonNews absolute-top-right"><a href="#/posts/{{post._id}}"><i class="fa fa-eye fa-2x"></i></a></button>
+                    <h4 class="v-tall cl-grey text-shadow no-margin lg-padding-top">{{post.dishName}}</h4>
+                    <h5 class="tall cl-grey text-shadow no-margin med-margin-top">{{post.restaurant}}</h5>
+                    <!--<img src="{{post.dishImage}}" style="height: 150px" alt="Picture of {{post.dishName}}"/>-->
+                </div>
+            </div>
     </div>
 </div>

@@ -1,49 +1,47 @@
-<div class="header fixed wide">
-    <h1 class="text-muted inline no-margin v-tall cl-grey navHeight"><em class="med-padding-left lg-margin-top inline">Eat-to-Bite</em></h1>
-    <ul class="inline-children text-right inline float-right">
-        <li class="navButton"><a ng-href="#"><i class="fa fa-home fa-fw fa-lg"></i><span class="menuWords">&nbsp Home</span></a></li>
-        <li class="navButton"><a ng-href="#/posts"><i class="fa fa-newspaper-o fa-lg"></i><span class="menuWords">&nbsp Blog</span></a></li>
-        <li class="navButton"><a ng-href="#/search"><i class="fa fa-search fa-lg"></i><span class="menuWords">&nbsp Search</span></a></li>
-        <li class="navButton" ng-show="!person.created"><a ng-href="#/createProfile"><i class="fa fa-child fa-lg"></i><span class="menuWords">Create Profile</span></a></li>
-        <li class="navButton" ng-show="person.created"><a ng-href="#/createProfile"><i class="fa fa-pencil-square-o"></i><span class="menuWords">&nbsp Edit Profile</span></a></li>
-        <li class="navButton active" ng-show="person.created"><a ng-href="#/profile"><i class="fa fa-user fa-lg"></i><span class="menuWords">&nbsp View Profile</span></a></li>
-        <li class="navButton"><a href="#/menus"><i class="fa fa-cutlery fa-lg"></i><span class="menuWords">&nbsp Menus</span></a></li>
-    </ul>
+<div class="block no-margin no-padding home-back  sit-up full-height wide">
+    <div class="header absolute-top wide">
+        <h1 class="text-muted inline no-margin v-tall cl-grey navHeight"><a ng-href="#" class="blank-anchor"><span class="theFont vv-tall lg-padding-left"><span class="cl-green-hover">Eat</span>-<span class="cl-blue-hover">to</span>-<span class="cl-orange-hover">Bite</span></span></a></h1>
+        <ul class="inline-children text-right inline float-right">
+            <li class="navButton"><a ng-href="#/posts"><i class="fa fa-newspaper-o fa-lg"></i><span class="menuWords">&nbsp Blog</span></a></li>
+            <li class="navButton"><a ng-href="#/search"><i class="fa fa-search fa-lg"></i><span class="menuWords">&nbsp Search</span></a></li>
+            <li class="navButton" ng-show="!person.created"><a ng-href="#/createProfile"><i class="fa fa-child fa-lg"></i><span class="menuWords">Create Profile</span></a></li>
+            <li class="navButton" ng-show="person.created"><a ng-href="#/createProfile"><i class="fa fa-pencil-square-o"></i><span class="menuWords">&nbsp Edit Profile</span></a></li>
+            <li class="navButton active" ng-show="person.created"><a ng-href="#/profile"><i class="fa fa-user fa-lg"></i><span class="menuWords">&nbsp View Profile</span></a></li>
+            <li class="navButton"><a href="#/menus"><i class="fa fa-cutlery fa-lg"></i><span class="menuWords">&nbsp Menus</span></a></li>
+        </ul>
+    </div>
+    <div class="cl-black home-back">
+        <h2>{{person.name}}<span>{{person.dob | date : M/d/yy}}</span></h2>
+        <img style="max-width: 200px" src="{{person.avatar}}" alt="Picture of {{person.name}}"/>
+        <p>{{person.email}}</p>
+        <p>Preference: {{person.likes}}</p>
+        <p>Distains: {{person.dislikes}}</p>
+        Dietary needs:
+        <br/>
+        <span class="diet veagan sm-padding" ng-show="person.diet.veagan">Veagan</span>
+        <span class="diet veggie sm-padding" ng-show="person.diet.veggie">Vegetarian</span>
+        <span class="diet pescatarian sm-padding" ng-show="person.diet.pescatarian">Pescatarian</span>
+        <span class="diet polloPesca sm-padding" ng-show="person.diet.polloPesca">Pollo-pescetarian</span>
+        <span class="diet carbFree sm-padding" ng-show="person.diet.carbFree">Carb Free</span>
+        <span class="diet carb sm-padding" ng-show="person.diet.carb">Low Carb</span>
+        <span class="diet protien sm-padding" ng-show="person.diet.protein">High Protein</span>
+        <span class="diet highFructose sm-padding" ng-show="person.diet.highFructose">No High Fructose Corn Syrup</span>
+        <span class="diet organic sm-padding" ng-show="person.diet.organic">Organic</span>
+        <span class="diet gmo sm-padding" ng-show="person.diet.gmo">GMO free</span>
+        <hr/>
+        Allergic to:
+        <br>
+        <span class="allergen nuts sm-padding" ng-show="person.allergens.nuts">Nuts</span>
+        <span class="allergen nuts sm-padding" ng-show="person.allergens.treeNuts">Tree Nuts</span>
+        <span class="allergen nuts sm-padding" ng-show="person.allergens.milk">Milk</span>
+        <span class="allergen nuts sm-padding" ng-show="person.allergens.dairy">Dairy</span>
+        <span class="allergen nuts sm-padding" ng-show="person.allergens.glucose">Wheat/Glucose</span>
+        <span class="allergen nuts sm-padding" ng-show="person.allergens.eggs">Eggs</span>
+        <span class="allergen nuts sm-padding" ng-show="person.allergens.fish">Fish</span>
+        <span class="allergen nuts sm-padding" ng-show="person.allergens.shellFish">Shellfish</span>
+        <span class="allergen nuts sm-padding" ng-show="person.allergens.soy">Soy</span>
+        <br/>
+        <a href="#/createProfile"><button>Edit</button></a>
+        <!--<button ng-click="printCookie()">Print</button>-->
+    </div>
 </div>
-{{work}}
-{{word}}
-<div class="cl-black">
-    <h2>{{person.name}}<span>{{person.dob | date : M/d/yy}}</span></h2>
-    <img style="max-width: 200px" src="{{person.avatar}}" alt="Picture of {{person.name}}"/>
-    <p>{{person.email}}</p>
-    <p>Preference: {{person.likes}}</p>
-    <p>Distains: {{person.dislikes}}</p>
-    Dietary needs:
-    <br/>
-    <span class="diet veagan sm-padding" ng-show="person.diet.veagan">Veagan</span>
-    <span class="diet veggie sm-padding" ng-show="person.diet.veggie">Vegetarian</span>
-    <span class="diet pescatarian sm-padding" ng-show="person.diet.pescatarian">Pescatarian</span>
-    <span class="diet polloPesca sm-padding" ng-show="person.diet.polloPesca">Pollo-pescetarian</span>
-    <span class="diet carbFree sm-padding" ng-show="person.diet.carbFree">Carb Free</span>
-    <span class="diet carb sm-padding" ng-show="person.diet.carb">Low Carb</span>
-    <span class="diet protien sm-padding" ng-show="person.diet.protein">High Protein</span>
-    <span class="diet highFructose sm-padding" ng-show="person.diet.highFructose">No High Fructose Corn Syrup</span>
-    <span class="diet organic sm-padding" ng-show="person.diet.organic">Organic</span>
-    <span class="diet gmo sm-padding" ng-show="person.diet.gmo">GMO free</span>
-    <hr/>
-    Allergic to:
-    <br>
-    <span class="allergen nuts sm-padding" ng-show="person.allergens.nuts">Nuts</span>
-    <span class="allergen nuts sm-padding" ng-show="person.allergens.treeNuts">Tree Nuts</span>
-    <span class="allergen nuts sm-padding" ng-show="person.allergens.milk">Milk</span>
-    <span class="allergen nuts sm-padding" ng-show="person.allergens.dairy">Dairy</span>
-    <span class="allergen nuts sm-padding" ng-show="person.allergens.glucose">Wheat/Glucose</span>
-    <span class="allergen nuts sm-padding" ng-show="person.allergens.eggs">Eggs</span>
-    <span class="allergen nuts sm-padding" ng-show="person.allergens.fish">Fish</span>
-    <span class="allergen nuts sm-padding" ng-show="person.allergens.shellFish">Shellfish</span>
-    <span class="allergen nuts sm-padding" ng-show="person.allergens.soy">Soy</span>
-    <br/>
-    <a href="#/createProfile"><button>Edit</button></a>
-    <!--<button ng-click="printCookie()">Print</button>-->
-</div>
-        
