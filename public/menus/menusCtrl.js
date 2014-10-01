@@ -121,30 +121,61 @@
                 return obj;
             };
             var lookAtRest = function (rest) {
+                rest.spoiledTotal = 0;
+                rest.total = 0;
                 for (var j = 0; j < rest.menus.length; j++) {
                     var newMenu = lookAtMenu(rest.menus[j])
                     rest.menus[j] = newMenu;
                     console.log("here is the restaurant");
                     console.log(rest);
+                    rest.spoiledTotal += rest.menus[j].spoiledTotal;
+                    rest.total += rest.menus[j].total;
+                    rest.goodTotal = rest.total - rest.spoiledTotal;
+
                 }
                 return rest;
             };
             var lookAtMenu = function (menu) {
+                menu.spoiledTotal = 0;
+                menu.total = 0;
                 for (var k = 0; k < menu.sections.length; k++) {
                     var newSection = lookAtSection(menu.sections[k])
                     menu.sections[k] = newSection;
+                    menu.spoiledTotal += menu.sections[k].spoiledTotal;
+                    menu.total += menu.sections[k].total;
                 }
+                menu.goodTotal = menu.total - menu.spoiledTotal;
                 return menu;
             };
             var lookAtSection = function (sect) {
+                sect.spoiledTotal = 0;
+                sect.total = 0;
                 for (var m = 0; m < sect.dishes.length; m++) {
-                    var dietResults = findMatches(sect.dishes[m].allergens, sect.dishes[m].diet).diet;
-                    var allergenResults = findMatches(sect.dishes[m].allergens, sect.dishes[m].diet).allergens;
+                    var allergenResults = findMatches(sect.dishes[m].allergens, sect.dishes[m].diet);
+                    var dietResults = findMatches(sect.dishes[m].allergens, sect.dishes[m].diet);
                     console.log('For ' + sect.dishes[m].name);
                     console.log(allergenResults);
                     console.log(dietResults);
-                    sect.dishes[m].matchedAllergens = allergenResults;
-                    sect.dishes[m].matchedDiet = dietResults;
+                    sect.dishes[m].matchedAllergens = allergenResults.allergens;
+                    sect.dishes[m].matchedAllergensCount = allergenResults.allergens.length;
+                    sect.dishes[m].matchedDiet = dietResults.diet;
+                    sect.dishes[m].matchedDietCount = dietResults.diet.length;
+                    var objSize = function(obj) {
+                        var size = 0, key;
+                        for (key in obj) {
+                            if (obj[key]) size++;
+                        }
+                        return size;
+                    };
+                    if (sect.dishes[m].matchedAllergensCount) {
+                        sect.spoiledTotal++;
+                        sect.dishes[m].class = 'bg-red-light';
+                    }
+                    else if (!sect.dishes[m].matchedAllergensCount && sect.dishes[m].matchedDietCount === objSize($scope.person.diet)) {
+                        sect.dishes[m].class = 'bg-green-light'
+                    }
+                    else{sect.dishes[m].class = 'bg-white'}
+                    sect.total++;
                 }
                 console.log("here is the section");
                 console.log(sect);
@@ -156,9 +187,9 @@
                 var allergic = matchAllergies(allergic, dishesAllergens);
                 var diet = matchDiets(diet, dishesDiets);
                 return {
-                    allergens: allergic,
-                    diet: diet
-                }
+                    allergens: allergic.allergenMatches,
+                    diet: diet.dietMatches
+                };
             };
             var getAllergens = function () {
                 var x = $scope.person.allergens;
@@ -183,24 +214,28 @@
                 return z;
             };
             var matchAllergies = function (aPObj, aDObj) {
-                var allergenMatches = {};
+                var allergenMatches = [];
                 for(var prop in aPObj) {
                     if (aDObj[prop]) {
-                        allergenMatches[prop] = true
+                        allergenMatches.push(prop);
                     }
                 }
-                return allergenMatches;
+                return {
+                    allergenMatches: allergenMatches,
+                };
 
             };
             var matchDiets = function (dPObj, dObj) {
                 var dietMatches = []
                 for(var prop in dPObj) {
                     if (dObj[prop]) {
-                    dietMatches.push[prop];
+                    dietMatches.push(prop);
                     }
 
                 }
-                return dietMatches;
+                return {
+                    dietMatches: dietMatches,
+                };
             };
 
         }]);

@@ -295,6 +295,9 @@
 .bg-green {
   background-color: #229955; }
 
+.bg-green-light {
+  background-color: rgba(39, 174, 96, 0.3); }
+
 .bg-green-hover:hover {
   background-color: #19703e; }
 
@@ -319,11 +322,17 @@
 .bg-black {
   background-color: rgba(0, 0, 0, 0.5); }
 
+.bg-white {
+  background-color: rgba(255, 255, 255, 0.15); }
+
 .bg-black-hover:hover {
   background-color: #1a1a1a; }
 
 .bg-red {
   background-color: #BD0006; }
+
+.bg-red-light {
+  background-color: rgba(189, 0, 6, 0.3); }
 
 .bg-red-hover:hover {
   background-color: #8a0004; }

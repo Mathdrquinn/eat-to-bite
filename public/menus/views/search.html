@@ -10,9 +10,6 @@
             <li class="navButton"><a href="#/menus"><i class="fa fa-cutlery fa-lg"></i><span class="menuWords">&nbsp Menus</span></a></li>
         </ul>
     </div>
-    <!--<button ng-click="checker.sayFirstRestaurant()">talk</button>-->
-    <!--<button ng-click="checker.getAllergens()">says allergens</button>-->
-    <!--<button ng-click="checker.getDiet()">says diet</button>-->
     <div class="row bigBox head-padding no-margin">
         <button class="button" ng-click="">test button</button>
     <div class="boxLeft col-lg-8 col-md-6 col-sm-12 bg-blue-shade">
@@ -43,7 +40,7 @@
             <div id="listHolder" class="sm-padding cl-grey">
                 <ul id="list" class="no-margin no-decoration">
                     <li class="place bg-black" ng-repeat="place in restaurants | filter : search : strict">
-                        <p>{{place.name}}</p>
+                        <p>{{place.name}} &nbsp <span class="float-right">{{place.goodTotal}} out of {{place.total}}</span></p>
                         <p>
                             <a href=""><button class="button" ng-show="!showMenus" ng-click="showMenus=!showMenus">Menus &nbsp<span class="small">({{place.menus.length}})</span></button></a>
                             <a href=""><button class="button" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
@@ -54,8 +51,8 @@
                         <!--</div>-->
                         <div class="row bg-black" ng-show="showMenus">
                             <ul id="menuList" class="no-margin no-decoration lg-padding col-lg-8 col-md-8 col-sm-8">
-                                <li class="menu" ng-repeat="menu in place.menus">
-                                    <p>{{menu.name}}</p>
+                                <li class="menu bg-black" ng-repeat="menu in place.menus">
+                                    <p>{{menu.name}} &nbsp <span class="float-right">{{menu.goodTotal}} out of {{menu.total}}</span></p>
                                     <p>{{menu.description}}</p>
                                     <p>
                                         <a href=""><button class="button" ng-show="!showMenu" ng-click="showMenu=!showMenu">Show Dishes</button></a>
@@ -66,16 +63,14 @@
                                             <p>{{section.name}}</p>
                                             <p>{{section.description}}</p>
                                             <ul class="no-margin no-decoration dishList">
-                                                <li class="dish" ng-repeat="dish in section.dishes">
-                                                    <div class="dishLeft">
+                                                <li class="dish lg-margin-bottom" ng-class="dish.class" ng-repeat="dish in section.dishes">
+                                                    <div class="dishLeft med-padding lg-padding-left">
                                                         <p>{{dish.name}}</p>
                                                         <p>{{dish.description}}</p>
-                                                        <button class="button" ng-click="checker.findMatches(dish.allergens, dish.diet)">check</button>
                                                     </div>
-                                                    <div class="dishRight">
+                                                    <div class="dishRight row">
                                                         <div class="keyAllergens col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
                                                             <p>Contains Allergens that do no harm:</p>
-                                                            <p>
                                                             <div class="btn-group bg-orange open">
                                                                 <a class="btn bg-blue" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
                                                                 <a class="btn bg-blue dropdown-toggle" data-toggle="dropdown" ng-click="drop=!drop" href="">
@@ -85,15 +80,6 @@
                                                                     <li ng-show="result"><a href=""><i class="fa fa-h-square fa-fw"></i> Soy</a></li>
                                                                     <li><a href=""><i class="fa fa-h-square fa-fw"></i> Eggs</a></li>
                                                                     <li><a href=""><i class="fa fa-h-square fa-fw"></i> Milk</a></li>
-                                                                    <!--<span type="checkbox" name="nuts" id="nuts" ng-show="dish.allergens.nuts"> Nuts</span>-->
-                                                                    <!--<span type="checkbox" name="treeNuts" id="treeNuts" ng-show="dish.allergens.treeNuts"> Tree Nuts</span>-->
-                                                                    <!--<span type="checkbox" name="milk" id="milk" ng-show="dish.allergens.milk"> Milk</span>-->
-                                                                    <!--<span type="checkbox" name="lactose" id="dairy" ng-show="dish.allergens.dairy"> Dairy</span>-->
-                                                                    <!--<span type="checkbox" name="glucose" id="glucose" ng-show="dish.allergens.glucose"> Wheat/Glucose</span>-->
-                                                                    <!--<span type="checkbox" name="eggs" id="eggs" ng-show="dish.allergens.eggs"> Eggs</span>-->
-                                                                    <!--<span type="checkbox" name="fish" id="fish" ng-show="dish.allergens.fish"> Fish</span>-->
-                                                                    <!--<span type="checkbox" name="shellfish" id="shellfish" ng-show="dish.allergens.shellfish"> Shellfish</span>-->
-                                                                    <!--<span type="checkbox" name="soy" id="soy" ng-show="dish.allergens.soy"> Soy</span>-->
                                                                 </ul>
                                                             </div>
                                                             </p>
@@ -104,15 +90,7 @@
                                                                 <a class="btn bg-red cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop2=!drop2" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
                                                                 <ul class="dropdown-menu" ng-show="drop2">
-                                                                    <li ng-show="allergens.nutsResult"><a href=""><i class="fa fa-flag fa-fw"></i> Nuts</a></li>
-                                                                    <li ng-show="allergens.treeNutsResult"><a href=""><i class="fa fa-flag fa-fw"></i> Tree Nuts</a></li>
-                                                                    <li ng-show="allergens.milkResult"><a href=""><i class="fa fa-flag fa-fw"></i> Milk</a></li>
-                                                                    <li ng-show="allergens.dairyResult"><a href=""><i class="fa fa-flag fa-fw"></i> Dairy</a></li>
-                                                                    <li ng-show="allergens.glucoseResult"><a href=""><i class="fa fa-flag fa-fw"></i> Wheat/Glucose</a></li>
-                                                                    <li ng-show="allergens.eggsResult"><a href=""><i class="fa fa-flag fa-fw"></i> Eggs</a></li>
-                                                                    <li ng-show="allergens.fishResult"><a href=""><i class="fa fa-flag fa-fw"></i> Fish</a></li>
-                                                                    <li ng-show="allergens.shellfishResult"><a href=""><i class="fa fa-flag fa-fw"></i> Shellfish</a></li>
-                                                                    <li ng-show="allergens.soyResult"><a href=""><i class="fa fa-flag fa-fw"></i> Soy</a></li>
+                                                                    <li ng-repeat="match in dish.matchedAllergens"><a href=""><i class="fa fa-flag fa-fw"></i> {{match}}</a></li>
                                                                 </ul>
                                                             </div>
                                                             </p>
@@ -138,41 +116,13 @@
                                                                 <a class="btn bg-green cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop4=!drop4" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
                                                                 <ul class="dropdown-menu" ng-show="drop4">
-                                                                    <li><a href=""><i class="fa fa-check-circle-o fa-fw"></i> Low Carb</a></li>
-                                                                    <li><a href=""><i class="fa fa-check-circle-o fa-fw"></i> Organic</a></li>
+                                                                    <li ng-repeat="match in dish.matchedDiet"><a href=""><i class="fa fa-check-circle-o fa-fw"></i>{{match}}</a></li>
+                                                                    <li class="cl-black text-center" ng-hide="dish.matchedDiet.length">No Matches</li>
                                                                 </ul>
                                                             </div>
                                                             </p>
                                                         </div>
                                                     </div>
-
-                                                    <!--<div class="allergens">-->
-                                                        <!--Allergens-->
-                                                        <!--<br>-->
-                                                        <!--<span type="checkbox" name="nuts" id="nuts" ng-show="dish.allergens.nuts"> Nuts</span>-->
-                                                        <!--<span type="checkbox" name="treeNuts" id="treeNuts" ng-show="dish.allergens.treeNuts"> Tree Nuts</span>-->
-                                                        <!--<span type="checkbox" name="milk" id="milk" ng-show="dish.allergens.milk"> Milk</span>-->
-                                                        <!--<span type="checkbox" name="lactose" id="dairy" ng-show="dish.allergens.dairy"> Dairy</span>-->
-                                                        <!--<span type="checkbox" name="glucose" id="glucose" ng-show="dish.allergens.glucose"> Wheat/Glucose</span>-->
-                                                        <!--<span type="checkbox" name="eggs" id="eggs" ng-show="dish.allergens.eggs"> Eggs</span>-->
-                                                        <!--<span type="checkbox" name="fish" id="fish" ng-show="dish.allergens.fish"> Fish</span>-->
-                                                        <!--<span type="checkbox" name="shellfish" id="shellfish" ng-show="dish.allergens.shellfish"> Shellfish</span>-->
-                                                        <!--<span type="checkbox" name="soy" id="soy" ng-show="dish.allergens.soy"> Soy</span>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="diet">-->
-                                                        <!--Qualities-->
-                                                        <!--<br>-->
-                                                        <!--<span type="checkbox" name="veagan" id="veagan" ng-show="dish.diet.veagan"> Veagan</span>-->
-                                                        <!--<span type="checkbox" name="geggie" id="veggie" ng-show="dish.diet.veggie"> Vegetarian</span>-->
-                                                        <!--<span type="checkbox" name="pescatarian" id="pescatarian" ng-show="dish.diet.pescatarian"> Pescatarian</span>-->
-                                                        <!--<span type="checkbox" name="polloPesca" id="polloPesca" ng-show="dish.diet.polloPesca">Pollo-pescetarian</span>-->
-                                                        <!--<span type="checkbox" name="carbFre" id="carbFree" ng-show="dish.diet.carbFree"> Carb Free</span>-->
-                                                        <!--<span type="checkbox" name="carb" id="carb" ng-show="dish.diet.carb"> Low Carb</span>-->
-                                                        <!--<span type="checkbox" name="protein" id="protein" ng-show="dish.diet.protein"> High Protein</span>-->
-                                                        <!--<span type="checkbox" name="highFructose" id="highFructose" ng-show="dish.diet.highFructose"> Contains No High Fructose Corn Syrup</span>-->
-                                                        <!--<span type="checkbox" name="organic" id="organic" ng-show="dish.diet.organic"> Organic</span>-->
-                                                        <!--<span type="checkbox" name="gmo" id="gmo" ng-show="dish.diet.gmo"> Free of GMO's</span>-->
-                                                    <!--</div>-->
                                                 </li>
                                             </ul>
                                         </li>

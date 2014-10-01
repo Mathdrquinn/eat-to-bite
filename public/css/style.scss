@@ -317,6 +317,9 @@ $theFont: 'Covered By Your Grace', cursive;
 .bg-green {
   background-color: $green;
 }
+.bg-green-light {
+  background-color: rgba(39, 174, 96, 0.3);
+}
 .bg-green-hover:hover {
   background-color: darken($green, 10%);
 }
@@ -341,11 +344,17 @@ $theFont: 'Covered By Your Grace', cursive;
 .bg-black {
   background-color: rgba(0,0,0,0.5);
 }
+.bg-white {
+  background-color: rgba(255,255,255,0.15);
+}
 .bg-black-hover:hover {
   background-color: lighten($black, 10%);
 }
 .bg-red {
   background-color: $red;
+}
+.bg-red-light {
+  background-color: rgba(189, 0, 6, 0.3);
 }
 .bg-red-hover:hover {
   background-color: darken($red, 10%);
