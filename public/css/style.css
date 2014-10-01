@@ -221,7 +221,7 @@
   font-weight: 600; }
 
 .small {
-  font-size: 12px; }
+  font-size: 10px; }
 
 .med {
   font-size: 14px; }
@@ -303,6 +303,9 @@
 
 .bg-blue-hover:hover {
   background-color: #142f47; }
+
+.bg-blue-shade {
+  background-color: rgba(31, 74, 111, 0.6); }
 
 .bg-dk-green {
   background-color: #19703e; }
@@ -500,7 +503,7 @@ body {
   margin-top: 200px; }
 
 .head-padding {
-  padding-top: 56px; }
+  padding-top: 75px; }
 
 .stretch {
   margin-top: 0px;
@@ -538,6 +541,9 @@ body {
 .corner {
   border-radius: 0; }
 
+.shrink {
+  height: 20px; }
+
 input {
   display: inline-block !important;
   max-width: 175px;
@@ -557,6 +563,24 @@ input:focus {
 .formBottom {
   color: #EEEEEE;
   font-weight: 400; }
+
+.boxLeft a {
+  background-color: rgba(0, 0, 0, 0.0001); }
+.boxLeft .bg-black {
+  background-color: rgba(0, 0, 0, 0.4); }
+.boxLeft .bg-black-hover:hover {
+  background-color: #1a1a1a; }
+.boxLeft #list {
+  max-height: 600px;
+  overflow-y: scroll; }
+  .boxLeft #list .description {
+    line-height: 25px; }
+  .boxLeft #list #menuList {
+    max-height: 600px;
+    overflow-y: scroll; }
+    .boxLeft #list #menuList #sectionList {
+      max-height: 600px;
+      overflow-y: scroll; }
 
 .formAllergens hr, .formDiet hr {
   margin-top: 0; }

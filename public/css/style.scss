@@ -241,7 +241,7 @@ $theFont: 'Covered By Your Grace', cursive;
   font-weight:600;
 }
 .small {
-  font-size: 12px;
+  font-size: 10px;
 }
 .med {
   font-size: 14px;
@@ -325,6 +325,9 @@ $theFont: 'Covered By Your Grace', cursive;
 }
 .bg-blue-hover:hover {
   background-color: darken($blue, 10%);
+}
+.bg-blue-shade {
+  background-color: rgba(31, 74, 111, 0.6);
 }
 .bg-dk-green {
   background-color: darken($green, 10%);
@@ -540,7 +543,7 @@ body {
 //}
 
 .head-padding {
-  padding-top: 56px;
+  padding-top: 75px;
 }
 .stretch {
   margin-top:0px;
@@ -585,6 +588,9 @@ body {
 .corner {
   border-radius: 0;
 }
+.shrink {
+  height: 20px;
+}
 input {
   display: inline-block !important;
   max-width: 175px;
@@ -605,7 +611,35 @@ input:focus {
   color: #EEEEEE;
   font-weight: 400;
 }
+.boxLeft {
+  a {
+    background-color: rgba(0,0,0, 0.0001)
+  }
+  .bg-black {
+    background-color: rgba(0,0,0,0.4);
+  }
+  .bg-black-hover:hover {
+    background-color: lighten($black, 10%);
+  }
+  #formName {
 
+  }
+  #list {
+    max-height: 600px;
+    overflow-y: scroll;
+    .description {
+      line-height: 25px;
+    }
+    #menuList {
+      max-height: 600px;
+      overflow-y: scroll;
+      #sectionList {
+        max-height: 600px;
+        overflow-y: scroll;
+      }
+    }
+  }
+}
 .formAllergens, .formDiet {
   hr {
     margin-top: 0;
