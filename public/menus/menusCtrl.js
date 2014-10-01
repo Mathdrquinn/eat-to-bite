@@ -8,7 +8,7 @@
             var lat = menusSvc.lat;
             var lng = menusSvc.lng;
             var zoom = menusSvc.zoom;
-            var person = menusSvc.person
+            var person = menusSvc.person;
             $scope.person = person;
 
             $scope.work = "Angular is here!";
@@ -33,6 +33,11 @@
             //Each profile has: firstName, lastName, name, email, DOB, date, avatar, created(boolean), likes, dislikes, allergens{}, diet{}
 
             $scope.person = $cookieStore.get("profile");
+
+            $scope.safe = function (x,y) {
+                if(x === y) {return true;}
+                else{return false;}
+            }
 
             function Beauty(person, places) {
                 this.talk = console.log('checker is loading');
@@ -77,10 +82,9 @@
                     console.log("z: " + z.carb);
                     return z;
                 }
-                this.matchAllergies = function (aPObj, aObj) {
+                this.matchAllergies = function (aPObj, aDObj) {
                     for(var prop in aPObj) {
-                        if (aObj[prop]) {alert("warning you are allergic to: " + prop + ", do not eat")}
-
+                        if (aDObj[prop]) {alert("warning you are allergic to: " + prop + ", do not eat")}
                     }
 
                 }

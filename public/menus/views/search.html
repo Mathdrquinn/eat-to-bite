@@ -14,6 +14,7 @@
     <!--<button ng-click="checker.getAllergens()">says allergens</button>-->
     <!--<button ng-click="checker.getDiet()">says diet</button>-->
     <div class="row bigBox head-padding no-margin">
+        <button class="button" ng-click="">test button</button>
     <div class="boxLeft col-lg-8 col-md-6 col-sm-12 bg-blue-shade">
             <form action="" id="#searchForm" class="no-margin cl-grey">
                 <input id="formName" class="no-margin inline" type="text" placeholder="Search by Name" ng-model="search.name"/>
@@ -75,14 +76,24 @@
                                                         <div class="keyAllergens col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
                                                             <p>Contains Allergens that do no harm:</p>
                                                             <p>
-                                                            <div class="btn-group open">
+                                                            <div class="btn-group bg-orange open">
                                                                 <a class="btn bg-blue" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
                                                                 <a class="btn bg-blue dropdown-toggle" data-toggle="dropdown" ng-click="drop=!drop" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
                                                                 <ul class="dropdown-menu" ng-show="drop">
-                                                                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> Soy</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-h-square fa-fw"></i> Soy</a></li>
                                                                     <li><a href=""><i class="fa fa-h-square fa-fw"></i> Eggs</a></li>
                                                                     <li><a href=""><i class="fa fa-h-square fa-fw"></i> Milk</a></li>
+                                                                    <!--<span type="checkbox" name="nuts" id="nuts" ng-show="dish.allergens.nuts"> Nuts</span>-->
+                                                                    <!--<span type="checkbox" name="treeNuts" id="treeNuts" ng-show="dish.allergens.treeNuts"> Tree Nuts</span>-->
+                                                                    <!--<span type="checkbox" name="milk" id="milk" ng-show="dish.allergens.milk"> Milk</span>-->
+                                                                    <!--<span type="checkbox" name="lactose" id="dairy" ng-show="dish.allergens.dairy"> Dairy</span>-->
+                                                                    <!--<span type="checkbox" name="glucose" id="glucose" ng-show="dish.allergens.glucose"> Wheat/Glucose</span>-->
+                                                                    <!--<span type="checkbox" name="eggs" id="eggs" ng-show="dish.allergens.eggs"> Eggs</span>-->
+                                                                    <!--<span type="checkbox" name="fish" id="fish" ng-show="dish.allergens.fish"> Fish</span>-->
+                                                                    <!--<span type="checkbox" name="shellfish" id="shellfish" ng-show="dish.allergens.shellfish"> Shellfish</span>-->
+                                                                    <!--<span type="checkbox" name="soy" id="soy" ng-show="dish.allergens.soy"> Soy</span>-->
                                                                 </ul>
                                                             </div>
                                                             </p>
@@ -93,8 +104,24 @@
                                                                 <a class="btn bg-red cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop2=!drop2" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
                                                                 <ul class="dropdown-menu" ng-show="drop2">
-                                                                    <li><a href=""><i class="fa fa-flag fa-fw"></i> Nuts</a></li>
-                                                                    <li><a href=""><i class="fa fa-flag fa-fw"></i> Fish</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.nuts, person.allergens.nuts)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Nuts</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.treeNuts, person.allergens.treeNuts)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Tree Nuts</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.milk, person.allergens.milk)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Milk</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.dairy, person.dairy.soy)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Dairy</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.glucose, person.allergens.glucose)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Wheat/Glucose</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Eggs</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Fish</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Shellfish</a></li>
+                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
+                                                                    <li ng-show="result"><a href=""><i class="fa fa-flag fa-fw"></i> Soy</a></li>
                                                                 </ul>
                                                             </div>
                                                             </p>
@@ -102,7 +129,7 @@
                                                         <div class="keyDiet col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
                                                             <p>Meets superflouous dietary conditions:</p>
                                                             <p>
-                                                            <div class="btn-group open">
+                                                            <div class="btn-group bg-orange open">
                                                                 <a class="btn bg-orange cl-grey" href=""><i class="fa fa-user fa-fw"></i> Qualities</a>
                                                                 <a class="btn bg-orange cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop3=!drop3" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
