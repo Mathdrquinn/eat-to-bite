@@ -11,7 +11,6 @@
         </ul>
     </div>
     <div class="row bigBox head-padding no-margin">
-        <button class="button" ng-click="">test button</button>
     <div class="boxLeft col-lg-8 col-md-6 col-sm-12 bg-blue-shade">
             <form action="" id="#searchForm" class="no-margin cl-grey">
                 <input id="formName" class="no-margin inline" type="text" placeholder="Search by Name" ng-model="search.name"/>
@@ -83,9 +82,8 @@
                                                                 </ul>
                                                             </div>
                                                             </p>
-                                                            <p>Contains Allergens that <em>DO</em> harm:</p>
-                                                            <p>
-                                                            <div class="btn-group open bg-red cl-grey">
+                                                            <p ng-show="dish.matchedAllergens.length">Contains Allergens that <em>DO</em> harm:</p>
+                                                            <div ng-show="dish.matchedAllergens.length" class="btn-group open bg-red cl-grey">
                                                                 <a class="btn bg-red cl-grey" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
                                                                 <a class="btn bg-red cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop2=!drop2" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
@@ -139,17 +137,14 @@
                 </ul>
             </div>
         </div>
-        <div class="boxRight col-lg-4 col-md-6 col-sm-12">
-            <p>lets see if this works</p>
-            <p>{{map.center}}</p>
-            <div id="mapPort">
-                <google-map center="map.center" zoom="map.zoom"></google-map>
-            </div>
-            <div id="infoBox">
-                <p> Starting Location <span id="myStartLoc"></span></p>
-                <p> Current Location <span id="myCurrentLoc"></span></p>
-                <p> Locations Changed <span id="myLocCount"></span> times. </p>
-                <p> Last Accuracy <span id="myAccuracy"></span> meters. </p>
+        <div class="boxRight col-lg-4 col-md-6 col-sm-12 cl-grey">
+            <div id="mapPort" ng-style="moveRight">
+                <i class="fa fa-angle-double-right fa-2x clickRight" ng-click="moveRight={'position': 'absolute', 'right': '-100%', 'trasition': 'ease 0.4s'}"></i>
+                <google-map center="map.center" zoom="map.zoom">
+                    <marker ng-repeat="spot in markers" coords="spot.coords" idkey="spot.id">
+                        <marker-label class="cl-black" content="spot.title" anchor="2 0" class="marker-labels"/>
+                    </marker>
+                </google-map>
             </div>
         </div>
     </div>

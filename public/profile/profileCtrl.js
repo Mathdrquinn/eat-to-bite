@@ -13,7 +13,7 @@
 
             var first = true
             var myCoordList = [];
-            var myGMap = null;
+            var myG = null;
             var myTrail = null;
             var myMap = angular.element('mapPort');
             var myStartLoc = angular.element('myStartLoc');
@@ -33,10 +33,10 @@
                 console.log('creating inside map');
                 window.map = {
                     center: {
-                        latitude: myCoords.B,
-                        longitude: myCoords.k
+                        latitude: myCoords.k,
+                        longitude: myCoords.B
                     },
-                    zoom: 15
+                    zoom: 11
                 };
 
                 console.log("myCoords: " + myCoords.k);

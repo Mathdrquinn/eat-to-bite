@@ -374,6 +374,15 @@ $theFont: 'Covered By Your Grace', cursive;
   background-color: rgba(0,0,0,0.000001);
   z-index:500;
 }
+.clickRight {
+  z-index: 505;
+  color: $grey;
+  padding: 5px 10px 5px 10px;
+  background-color: $black;
+  position: absolute;
+  top: 0px;
+  left: 15px;
+}
 .button {
   margin: 3px;
   padding:3px 30px 3px 30px;

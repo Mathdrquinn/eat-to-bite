@@ -5,20 +5,47 @@
         .module('menus')
         .controller('menusCtrl', ['$scope', '$filter', 'menusSvc', '$location', '$routeParams', '$cookieStore', function ($scope, $filter, menusSvc, $location, $routeParams, $cookieStore) {
 
-            var lat = menusSvc.lat;
-            var lng = menusSvc.lng;
+            //Pulling User's location information to center Map
+            var lat = Math.round(menusSvc.lat * 1000000) / 1000000;
+            var lng = Math.round(menusSvc.lng * 1000000) / 1000000;
             var zoom = menusSvc.zoom;
             var person = menusSvc.person;
             $scope.person = person;
 
-            $scope.work = "Angular is here!";
+            console.log('creating center');
+//            $scope.map = menusSvc.map;
+//            console.log($scope.map);
+
+            $scope.map = $scope.person.map;
+
+            var newCenter = {
+                center: {
+                    latitude: parseFloat(lat),
+                    longitude: parseFloat(lng)
+                },
+                zoom: parseFloat(zoom)
+            };
+
+            $scope.clickRoute = function() {
+
+                $scope.map = newCenter;
+
+            };
+
+            $scope.markers = [
+                {
+                    id:0,
+                    title: "Your Location",
+                    coords: {
+                        latitude: lat,
+                        longitude: lng
+                    }
+                }
+            ];
 
             menusSvc.getRestaurants().success(function (restaurants) {
                 console.log(restaurants['0']);
-//                var poop = lookAtEach(restaurants);
-//                console.log(poop);
 //                $scope.restaurants = restaurants;
-//                console.log(restaurants);
                 $scope.restaurants = lookAtEach(restaurants);
 
                 //Defining checker here to ensure that Data is received before evaluation
@@ -60,8 +87,6 @@
                     this.diet = this.getDiet()
                     this.allergic = this.matchAllergies(this.allergic, dishesAllergens);
                     this.diet = this.matchDiets(this.diet, dishesDiets);
-                    console.log ("allergic")
-                    console.log("diet");
                 }
                 this.getAllergens = function () {
                     var x = person.allergens;
@@ -69,7 +94,6 @@
                     for (var prop in x) {
                         if (x[prop]) {
                             z[prop] = x[prop]
-                            console.log(prop + " is true")
                         }
                     }
 //                    console.log("z: " + z.nuts + " " + z[nuts] + " " + z);
@@ -81,7 +105,6 @@
                     for (var prop in y) {
                         if (y[prop]) {
                             z[prop] = y[prop]
-                            console.log(prop + " is true")
                         }
                     }
 //                    console.log("z: " + z.carb);
@@ -102,21 +125,20 @@
             };
             $scope.checker = new Beauty($scope.person, $scope.restaurants);
 
-            console.log('creating center');
-            $scope.map = {
-                center: {
-                    latitude: 32.8444444,
-                    longitude: -79.9
-                },
-                zoom: 11
-            };
-
-            //$scope.map = menusSvc.map;
-            //var lookAtEach = function ($scope.restaurants.restaurant.name);
             var lookAtEach = function(obj) {
                 for(var prop in obj) {
                     var newRestaurant = lookAtRest(obj[prop])
                     obj[prop] = newRestaurant;
+                    $scope.markers.push(
+                        {
+                            id:$scope.markers.length,
+                            title: obj[prop].name,
+                            coords: {
+                                latitude: obj[prop].lat,
+                                longitude: obj[prop].long
+                            }
+                        }
+                    );
                 }
                 return obj;
             };
@@ -126,8 +148,6 @@
                 for (var j = 0; j < rest.menus.length; j++) {
                     var newMenu = lookAtMenu(rest.menus[j])
                     rest.menus[j] = newMenu;
-                    console.log("here is the restaurant");
-                    console.log(rest);
                     rest.spoiledTotal += rest.menus[j].spoiledTotal;
                     rest.total += rest.menus[j].total;
                     rest.goodTotal = rest.total - rest.spoiledTotal;
@@ -153,9 +173,9 @@
                 for (var m = 0; m < sect.dishes.length; m++) {
                     var allergenResults = findMatches(sect.dishes[m].allergens, sect.dishes[m].diet);
                     var dietResults = findMatches(sect.dishes[m].allergens, sect.dishes[m].diet);
-                    console.log('For ' + sect.dishes[m].name);
-                    console.log(allergenResults);
-                    console.log(dietResults);
+//                    console.log('For ' + sect.dishes[m].name);
+//                    console.log(allergenResults);
+//                    console.log(dietResults);
                     sect.dishes[m].matchedAllergens = allergenResults.allergens;
                     sect.dishes[m].matchedAllergensCount = allergenResults.allergens.length;
                     sect.dishes[m].matchedDiet = dietResults.diet;
@@ -177,8 +197,6 @@
                     else{sect.dishes[m].class = 'bg-white'}
                     sect.total++;
                 }
-                console.log("here is the section");
-                console.log(sect);
                 return sect;
             }
             var findMatches = function(dishesAllergens, dishesDiets) {
