@@ -7,6 +7,40 @@ html
         link(rel='stylesheet', href='/components/font-awesome/css/font-awesome.css')
         link(rel='stylesheet', href='/css/style.css')
     body.no-margin.no-padding.ovrflw-x(ng-app= ngApp )
+        .header.absolute-top.wide
+            h1.text-muted.inline.no-margin.v-tall.cl-grey.navHeight
+                a.blank-anchor(ng-href='#')
+                    span.theFont.vv-tall.lg-padding-left
+                        span.cl-green-hover Eat
+                        | -
+                        span.cl-blue-hover to
+                        | -
+                        span.cl-orange-hover Bite
+            ul.inline-children.text-right.inline.float-right
+                li.navButton
+                    a(ng-href='#/posts')
+                        i.fa.fa-newspaper-o.fa-lg
+                        span.menuWords &nbsp Blog
+                li.navButton
+                    a(ng-href='#/search')
+                        i.fa.fa-search.fa-lg
+                        span.menuWords &nbsp Search
+                li.navButton(ng-show='!person.created')
+                    a(ng-href='#/createProfile')
+                        i.fa.fa-child.fa-lg
+                        span.menuWords Create Profile
+                li.navButton(ng-show='person.created')
+                    a(ng-href='#/createProfile')
+                        i.fa.fa-pencil-square-o
+                        span.menuWords &nbsp Edit Profile
+                li.navButton(ng-show='person.created')
+                    a(ng-href='#/profile')
+                        i.fa.fa-user.fa-lg
+                        span.menuWords &nbsp View Profile
+                li.navButton
+                    a(href='#/menus')
+                        i.fa.fa-cutlery.fa-lg
+                        span.menuWords &nbsp Menus
         block content
         script(src='/components/jquery/dist/jquery.js')
         script(src='/components/angular/angular.js')

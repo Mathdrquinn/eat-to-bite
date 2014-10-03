@@ -1,21 +1,10 @@
 <div class="block no-margin no-padding home-back  sit-up full-height wide">
-    <div class="header absolute-top wide">
-        <h1 class="text-muted inline no-margin v-tall cl-grey navHeight"><a ng-href="#" class="blank-anchor"><span class="theFont vv-tall lg-padding-left"><span class="cl-green-hover">Eat</span>-<span class="cl-blue-hover">to</span>-<span class="cl-orange-hover">Bite</span></span></a></h1>
-        <ul class="inline-children text-right inline float-right">
-            <li class="navButton"><a ng-href="#/posts"><i class="fa fa-newspaper-o fa-lg"></i><span class="menuWords">&nbsp Blog</span></a></li>
-            <li class="navButton"><a ng-href="#/search"><i class="fa fa-search fa-lg"></i><span class="menuWords">&nbsp Search</span></a></li>
-            <li class="navButton" ng-show="!person.created"><a ng-href="#/createProfile"><i class="fa fa-child fa-lg"></i><span class="menuWords">Create Profile</span></a></li>
-            <li class="navButton" ng-show="person.created"><a ng-href="#/createProfile"><i class="fa fa-pencil-square-o"></i><span class="menuWords">&nbsp Edit Profile</span></a></li>
-            <li class="navButton active" ng-show="person.created"><a ng-href="#/profile"><i class="fa fa-user fa-lg"></i><span class="menuWords">&nbsp View Profile</span></a></li>
-            <li class="navButton"><a href="#/menus"><i class="fa fa-cutlery fa-lg"></i><span class="menuWords">&nbsp Menus</span></a></li>
-        </ul>
-    </div>
     <div class="row bigBox head-padding no-margin">
     <div class="boxLeft col-lg-8 col-md-6 col-sm-12 col-xs-12 bg-blue-shade transition1" ng-style="makeFull">
-            <form action="" id="#searchForm" class="no-margin cl-grey">
-                <input id="formName" class="no-margin inline" type="text" placeholder="Search by Name" ng-model="search.name"/>
-                <label class="formLabel">Style
-                    <select name="" id="formStyle" ng-model="search.style">
+            <form action="" id="#searchForm" class="no-margin cl-grey text-center med-padding-top">
+                <input id="formName" class="no-margin inline med cl-black" type="text" placeholder="Search by Name" ng-model="search.name"/>
+                <label class="formLabel med">Style
+                    <select name="" id="formStyle" ng-model="search.style" class="cl-blue">
                         <option value="American">American</option>
                         <option value="Southern">Southern</option>
                         <option value="Seafood">Seafood</option>
@@ -26,8 +15,9 @@
                         <option value=""></option>
                     </select>
                 </label>
-                <label class="formLabel">
-                    <select name="" id="formDistance" ng.model="search.distance">
+                <label class="formLabel med"> Distance
+                    <select name="" id="formDistance" ng.model="search.distance" class="cl-blue">
+                        <option class="no-margin" value=""></option>
                         <option class="no-margin" value="1">< 1 mi.</option>
                         <option class="no-margin" value="3">< 3 mi.</option>
                         <option class="no-margin" value="5">< 5 mi.</option>
@@ -39,7 +29,7 @@
             <div id="listHolder" class="sm-padding cl-grey">
                 <ul id="list" class="no-margin no-decoration">
                     <li class="place bg-black" ng-repeat="place in restaurants | filter : search : strict">
-                        <p>{{place.name}} &nbsp <span class="float-right">{{place.goodTotal}} out of {{place.total}}</span></p>
+                        <h3>{{place.name}} &nbsp <span class="float-right v-small">{{place.goodTotal}} out of {{place.total}}</span></h3>
                         <p>
                             <a href=""><button class="button" ng-show="!showMenus" ng-click="showMenus=!showMenus">Menus &nbsp<span class="small">({{place.menus.length}})</span></button></a>
                             <a href=""><button class="button" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
@@ -51,38 +41,44 @@
                         <div class="row bg-black" ng-show="showMenus">
                             <ul id="menuList" class="no-margin no-decoration lg-padding col-lg-8 col-md-8 col-sm-8">
                                 <li class="menu bg-black" ng-repeat="menu in place.menus">
-                                    <p>{{menu.name}} &nbsp <span class="float-right">{{menu.goodTotal}} out of {{menu.total}}</span></p>
-                                    <p>{{menu.description}}</p>
+                                    <h4>{{menu.name}} &nbsp <span class="float-right v-small">{{menu.goodTotal}} out of {{menu.total}}</span></h4>
+                                    <h6>{{menu.description}}</h6>
                                     <p>
                                         <a href=""><button class="button" ng-show="!showMenu" ng-click="showMenu=!showMenu">Show Dishes</button></a>
                                         <a href=""><button class="button" ng-show="showMenu" ng-click="showMenu=!showMenu">Hide Dishes</button></a>
                                     </p>
                                     <ul id="sectionList" class="no-margin no-decoration bg-black lg-padding" ng-show="showMenu">
                                         <li class="section" ng-repeat="section in menu.sections">
-                                            <p>{{section.name}}</p>
-                                            <p>{{section.description}}</p>
+                                            <h5>{{section.name}}</h5>
+                                            <hr style="line-height: 5px"/>
+                                            <p class="med">{{section.description}}<p>
                                             <ul class="no-margin no-decoration dishList">
                                                 <li class="dish lg-margin-bottom" ng-class="dish.class" ng-repeat="dish in section.dishes">
                                                     <div class="dishLeft med-padding lg-padding-left">
-                                                        <p>{{dish.name}}</p>
-                                                        <p>{{dish.description}}</p>
+                                                        <h5>{{dish.name}}</h5>
+                                                        <hr style="line-height: 5px"/>
+                                                        <p class="v-small">{{dish.description}}</p>
                                                     </div>
                                                     <div class="dishRight row">
                                                         <div class="keyAllergens col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
-                                                            <p>Contains Allergens that do no harm:</p>
-                                                            <div class="btn-group bg-orange open">
+                                                            <p ng-show="!dish.matchedAllergens.length" class="v-small">Contains Allergens that do no harm:</p>
+                                                            <div ng-show="!dish.matchedAllergens.length" class="btn-group bg-orange open">
                                                                 <a class="btn bg-blue" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
                                                                 <a class="btn bg-blue dropdown-toggle" data-toggle="dropdown" ng-click="drop=!drop" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
                                                                 <ul class="dropdown-menu" ng-show="drop">
-                                                                    <span ng-init="result=safe(dish.allergens.soy, person.allergens.soy)"></span>
-                                                                    <li ng-show="result"><a href=""><i class="fa fa-h-square fa-fw"></i> Soy</a></li>
-                                                                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> Eggs</a></li>
-                                                                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> Milk</a></li>
+                                                                    <li ng-show="dish.allergens.nuts"><a href=""><i class="fa fa-h-square fa-fw"></i> Nuts</a></li>
+                                                                    <li ng-show="dish.allergens.treeNuts"><a href=""><i class="fa fa-h-square fa-fw"></i> Tree Nuts</a></li>
+                                                                    <li ng-show="dish.allergens.milk"><a href=""><i class="fa fa-h-square fa-fw"></i> Milk</a></li>
+                                                                    <li ng-show="dish.allergens.dairy"><a href=""><i class="fa fa-h-square fa-fw"></i> Dairy</a></li>
+                                                                    <li ng-show="dish.allergens.glucose"><a href=""><i class="fa fa-h-square fa-fw"></i> Wheat/Glucose</a></li>
+                                                                    <li ng-show="dish.allergens.eggs"><a href=""><i class="fa fa-h-square fa-fw"></i> Eggs</a></li>
+                                                                    <li ng-show="dish.allergens.fish"><a href=""><i class="fa fa-h-square fa-fw"></i> Fish</a></li>
+                                                                    <li ng-show="dish.allergens.shellfish"><a href=""><i class="fa fa-h-square fa-fw"></i> Shellfish</a></li>
+                                                                    <li ng-show="dish.allergens.soy"><a href=""><i class="fa fa-h-square fa-fw"></i> Soy</a></li>
                                                                 </ul>
                                                             </div>
-                                                            </p>
-                                                            <p ng-show="dish.matchedAllergens.length">Contains Allergens that <em>DO</em> harm:</p>
+                                                            <p ng-show="dish.matchedAllergens.length" class="v-small">Contains Allergens that <em>DO</em> harm:</p>
                                                             <div ng-show="dish.matchedAllergens.length" class="btn-group open bg-red cl-grey">
                                                                 <a class="btn bg-red cl-grey" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
                                                                 <a class="btn bg-red cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop2=!drop2" href="">
@@ -91,34 +87,45 @@
                                                                     <li ng-repeat="match in dish.matchedAllergens"><a href=""><i class="fa fa-flag fa-fw"></i> {{match}}</a></li>
                                                                 </ul>
                                                             </div>
-                                                            </p>
                                                         </div>
                                                         <div class="keyDiet col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
-                                                            <p>Meets superflouous dietary conditions:</p>
-                                                            <p>
-                                                            <div class="btn-group bg-orange open">
+                                                            <p ng-show="!dish.dietSafe" class="v-small">Meets superflouous dietary conditions:</p>
+                                                            <div ng-show="!dish.dietSafe" class="btn-group bg-orange open">
                                                                 <a class="btn bg-orange cl-grey" href=""><i class="fa fa-user fa-fw"></i> Qualities</a>
                                                                 <a class="btn bg-orange cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop3=!drop3" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
                                                                 <ul class="dropdown-menu" ng-show="drop3">
-                                                                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> High Protien</a></li>
-                                                                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> GMO Free</a></li>
-                                                                    <li><a href=""><i class="fa fa-h-square fa-fw"></i> Veagan</a></li>
+                                                                    <li ng-show="dish.diet.veagan"><a href=""><i class="fa fa-h-square fa-fw"></i> Veagan</a></li>
+                                                                    <li ng-show="dish.diet.veggie"><a href=""><i class="fa fa-h-square fa-fw"></i> Vegetarian</a></li>
+                                                                    <li ng-show="dish.diet.pescatarian"><a href=""><i class="fa fa-h-square fa-fw"></i> Pescatarian</a></li>
+                                                                    <li ng-show="dish.diet.pollo-pesca"><a href=""><i class="fa fa-h-square fa-fw"></i> Pollo-pescatarian</a></li>
+                                                                    <li ng-show="dish.diet.carbFree"><a href=""><i class="fa fa-h-square fa-fw"></i> Carb Free</a></li>
+                                                                    <li ng-show="dish.diet.carb"><a href=""><i class="fa fa-h-square fa-fw"></i> Low Carb</a></li>
+                                                                    <li ng-show="dish.diet.protien"><a href=""><i class="fa fa-h-square fa-fw"></i> High Protein</a></li>
+                                                                    <li ng-show="dish.diet.highFructose"><a href=""><i class="fa fa-h-square fa-fw"></i> HFCS Free</a></li>
+                                                                    <li ng-show="dish.diet.organic"><a href=""><i class="fa fa-h-square fa-fw"></i> Organic</a></li>
+                                                                    <li ng-show="dish.diet.gmo"><a href=""><i class="fa fa-h-square fa-fw"></i> GMO Free</a></li>
                                                                 </ul>
                                                             </div>
-                                                            </p>
-                                                            <p>Meets <em>ALL</em>&nbsp Dietary Conditions</p>
-                                                            <p>
-                                                            <div class="btn-group open bg-green cl-grey">
+                                                            <p ng-show="dish.dietSafe" class="v-small">Meets <em>ALL</em>&nbsp Dietary Conditions</p>
+                                                            <div ng-show="dish.dietSafe" class="btn-group open bg-green cl-grey">
                                                                 <a class="btn bg-green cl-grey" href=""><i class="fa fa-user fa-fw"></i> Qualities</a>
                                                                 <a class="btn bg-green cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop4=!drop4" href="">
                                                                     <span class="fa fa-caret-down"></span></a>
                                                                 <ul class="dropdown-menu" ng-show="drop4">
-                                                                    <li ng-repeat="match in dish.matchedDiet"><a href=""><i class="fa fa-check-circle-o fa-fw"></i>{{match}}</a></li>
-                                                                    <li class="cl-black text-center" ng-hide="dish.matchedDiet.length">No Matches</li>
+                                                                    <li ng-show="dish.diet.veagan"><a href=""><i class="fa fa-h-square fa-fw"></i> Veagan</a></li>
+                                                                    <li ng-show="dish.diet.veggie"><a href=""><i class="fa fa-h-square fa-fw"></i> Vegetarian</a></li>
+                                                                    <li ng-show="dish.diet.pescatarian"><a href=""><i class="fa fa-h-square fa-fw"></i> Pescatarian</a></li>
+                                                                    <li ng-show="dish.diet.pollo-pesca"><a href=""><i class="fa fa-h-square fa-fw"></i> Pollo-pescatarian</a></li>
+                                                                    <li ng-show="dish.diet.carbFree"><a href=""><i class="fa fa-h-square fa-fw"></i> Carb Free</a></li>
+                                                                    <li ng-show="dish.diet.carb"><a href=""><i class="fa fa-h-square fa-fw"></i> Low Carb</a></li>
+                                                                    <li ng-show="dish.diet.protien"><a href=""><i class="fa fa-h-square fa-fw"></i> High Protein</a></li>
+                                                                    <li ng-show="dish.diet.highFructose"><a href=""><i class="fa fa-h-square fa-fw"></i> HFCS Free</a></li>
+                                                                    <li ng-show="dish.diet.organic"><a href=""><i class="fa fa-h-square fa-fw"></i> Organic</a></li>
+                                                                    <li ng-show="dish.diet.gmo"><a href=""><i class="fa fa-h-square fa-fw"></i> GMO Free</a></li>
+                                                                    <li ng-show="!dish.matchedDietCount.length"><a href=""><i class="fa fa-h-square fa-fw"></i> No Qualifications</a></li>
                                                                 </ul>
                                                             </div>
-                                                            </p>
                                                         </div>
                                                     </div>
                                                 </li>

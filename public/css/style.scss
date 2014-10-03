@@ -240,8 +240,8 @@ $theFont: 'Covered By Your Grace', cursive;
 .heavy {
   font-weight:600;
 }
-.small {
-  font-size: 10px;
+.v-small {
+  font-size: 11px;
 }
 .med {
   font-size: 14px;
@@ -480,7 +480,7 @@ $theFont: 'Covered By Your Grace', cursive;
 }
 body {
   font-family: $font !important;
-  background-color: $grey;
+  background-color: $black;
 }
 a{
   background-color: $black;
@@ -541,6 +541,7 @@ body {
   background-color: rgbs(0,0,0,1);
   background-size: cover;
   background-repeat: none;
+  min-height: 900px;
 }
 .sit-up {
   background-position-y: -130px;
@@ -640,10 +641,12 @@ input:focus {
     background-color: lighten($black, 10%);
   }
   #formName {
-
+    background: white;
+    color: $black;
+    border-radius: 3px;
   }
   #list {
-    max-height: 600px;
+    max-height: 610px;
     overflow-y: scroll;
     .description {
       line-height: 25px;

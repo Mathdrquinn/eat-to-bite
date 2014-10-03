@@ -192,6 +192,7 @@
                         sect.dishes[m].class = 'bg-red-light';
                     }
                     else if (!sect.dishes[m].matchedAllergensCount && sect.dishes[m].matchedDietCount === objSize($scope.person.diet)) {
+                        sect.dishes[m].dietSafe = true;
                         sect.dishes[m].class = 'bg-green-light'
                     }
                     else{sect.dishes[m].class = 'bg-white'}
@@ -245,6 +246,21 @@
             };
             var matchDiets = function (dPObj, dObj) {
                 var dietMatches = []
+                if(dObj.carbFree) {
+                    dObj.carb = true;
+                }
+                if(dObj.pescatarian) {
+                    dObj.polloPesca = true;
+                }
+                if(dObj.veggie) {
+                    dObj.pescatarian = true;
+                    dObj.polloPesca = true;
+                }
+                if(dObj.veagan) {
+                    dObj.veggie = true;
+                    dObj.pescatarian = true;
+                    dObj.polloPesca = true;
+                }
                 for(var prop in dPObj) {
                     if (dObj[prop]) {
                     dietMatches.push(prop);
