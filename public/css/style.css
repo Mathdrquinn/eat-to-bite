@@ -359,7 +359,7 @@
   background-color: black;
   position: absolute;
   top: 0px;
-  left: 15px; }
+  transition: ease 1s; }
 
 .button {
   margin: 3px;
@@ -615,10 +615,16 @@ input:focus {
 .place .button:hover {
   background-color: #255783; }
 
-#mapPort {
-  width: 100%;
-  height: 480px;
-  margin: 0; }
+.boxRight {
+  transition: 1.5s; }
+  .boxRight #mapPort {
+    width: 100%;
+    height: 480px;
+    margin: 0;
+    transition: ease 1.5s; }
+
+.transition1 {
+  transition: ease 1.5s; }
 
 .angular-google-map-container {
   height: 400px;

@@ -11,7 +11,7 @@
         </ul>
     </div>
     <div class="row bigBox head-padding no-margin">
-    <div class="boxLeft col-lg-8 col-md-6 col-sm-12 bg-blue-shade">
+    <div class="boxLeft col-lg-8 col-md-6 col-sm-12 col-xs-12 bg-blue-shade transition1" ng-style="makeFull">
             <form action="" id="#searchForm" class="no-margin cl-grey">
                 <input id="formName" class="no-margin inline" type="text" placeholder="Search by Name" ng-model="search.name"/>
                 <label class="formLabel">Style
@@ -137,9 +137,9 @@
                 </ul>
             </div>
         </div>
-        <div class="boxRight col-lg-4 col-md-6 col-sm-12 cl-grey">
-            <div id="mapPort" ng-style="moveRight">
-                <i class="fa fa-angle-double-right fa-2x clickRight" ng-click="moveRight={'position': 'absolute', 'right': '-100%', 'trasition': 'ease 0.4s'}"></i>
+        <div class="boxRight col-lg-4 col-md-6 col-sm-12 col-xs-12 cl-grey" ng-style="moveRight">
+            <div id="mapPort" class="">
+                <i class="fa fa-angle-double-right fa-2x clickRight" ng-style="keepLeft" ng-click="moveRight={'width': '1%'}; keepLeft={'left': '-7px', 'transform': 'rotate(-180deg)', 'color':'white', 'background\-color':'black'}; makeFull={'width':'96.5%'}" ng-dblclick="moveRight={}; keepLeft={}; makeFull={}"></i>
                 <google-map center="map.center" zoom="map.zoom">
                     <marker ng-repeat="spot in markers" coords="spot.coords" idkey="spot.id">
                         <marker-label class="cl-black" content="spot.title" anchor="2 0" class="marker-labels"/>
