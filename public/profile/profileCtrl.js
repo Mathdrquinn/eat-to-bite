@@ -72,7 +72,8 @@
                 console.log(newProfile.map);
                 $cookieStore.put("profile", newProfile);
                 console.log("cookie created: " + $cookieStore.get("profile"));
-                $location.path('/profile')
+                window.user = {created: true};
+                $location.path('/search')
             };
 
             $scope.printCookie = function () {

@@ -15,21 +15,21 @@
                         <option value=""></option>
                     </select>
                 </label>
-                <label class="formLabel med"> Distance
-                    <select name="" id="formDistance" ng.model="search.distance" class="cl-blue">
-                        <option class="no-margin" value=""></option>
-                        <option class="no-margin" value="1">< 1 mi.</option>
-                        <option class="no-margin" value="3">< 3 mi.</option>
-                        <option class="no-margin" value="5">< 5 mi.</option>
-                        <option class="no-margin" value="10">< 10 mi.</option>
-                        <option class="no-margin" value="20">< 20 mi.</option>
-                    </select>
-                </label>
+                <span></span>Distance: {{radius}} mi.
+                <input ng-model="radius"  class="inline" type="range" name="points" min="1" max="20">
+
             </form>
             <div id="listHolder" class="sm-padding cl-grey">
                 <ul id="list" class="no-margin no-decoration">
-                    <li class="place bg-black" ng-repeat="place in restaurants | filter : search : strict">
-                        <h3>{{place.name}} &nbsp <span class="float-right v-small">{{place.goodTotal}} out of {{place.total}}</span></h3>
+                    <li class="place bg-black" ng-repeat="place in restaurants | filter : search : strict" ng-show="place.distanceMiles <= radius">
+                        <h3>
+                            {{place.name}} &nbsp
+                            <span class="float-right v-small">
+                                <span>{{place.goodTotal}} out of {{place.total}}</span>
+                                <br/>
+                                <span>{{place.distanceMiles}} mi.</span>
+                            </span>
+                        </h3>
                         <p>
                             <a href=""><button class="button" ng-show="!showMenus" ng-click="showMenus=!showMenus">Menus &nbsp<span class="small">({{place.menus.length}})</span></button></a>
                             <a href=""><button class="button" ng-show="showMenus" ng-click="showMenus=!showMenus">Hide Menus</button></a>
@@ -41,7 +41,8 @@
                         <div class="row bg-black" ng-show="showMenus">
                             <ul id="menuList" class="no-margin no-decoration lg-padding col-lg-8 col-md-8 col-sm-8">
                                 <li class="menu bg-black" ng-repeat="menu in place.menus">
-                                    <h4>{{menu.name}} &nbsp <span class="float-right v-small">{{menu.goodTotal}} out of {{menu.total}}</span></h4>
+                                    <h4>
+                                        {{menu.name}} &nbsp <span class="float-right v-small"><span>{{menu.goodTotal}} out of {{menu.total}}</span><br/></span></h4>
                                     <h6>{{menu.description}}</h6>
                                     <p>
                                         <a href=""><button class="button" ng-show="!showMenu" ng-click="showMenu=!showMenu">Show Dishes</button></a>
@@ -61,7 +62,7 @@
                                                     </div>
                                                     <div class="dishRight row">
                                                         <div class="keyAllergens col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
-                                                            <p ng-show="!dish.matchedAllergens.length" class="v-small">Contains Allergens that do no harm:</p>
+                                                            <!--<p ng-show="!dish.matchedAllergens.length" class="v-small">Contains Allergens that do no harm:</p>-->
                                                             <div ng-show="!dish.matchedAllergens.length" class="btn-group bg-orange open">
                                                                 <a class="btn bg-blue" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
                                                                 <a class="btn bg-blue dropdown-toggle" data-toggle="dropdown" ng-click="drop=!drop" href="">
@@ -78,7 +79,7 @@
                                                                     <li ng-show="dish.allergens.soy"><a href=""><i class="fa fa-h-square fa-fw"></i> Soy</a></li>
                                                                 </ul>
                                                             </div>
-                                                            <p ng-show="dish.matchedAllergens.length" class="v-small">Contains Allergens that <em>DO</em> harm:</p>
+                                                            <!--<p ng-show="dish.matchedAllergens.length" class="v-small">Contains Allergens that <em>DO</em> harm:</p>-->
                                                             <div ng-show="dish.matchedAllergens.length" class="btn-group open bg-red cl-grey">
                                                                 <a class="btn bg-red cl-grey" href=""><i class="fa fa-user fa-fw"></i> Allergens</a>
                                                                 <a class="btn bg-red cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop2=!drop2" href="">
@@ -89,7 +90,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="keyDiet col-lg-6 col-md-6 col-sm-6 col-xs-12 lg-padding">
-                                                            <p ng-show="!dish.dietSafe" class="v-small">Meets superflouous dietary conditions:</p>
+                                                            <!--<p ng-show="!dish.dietSafe" class="v-small">Meets superflouous dietary conditions:</p>-->
                                                             <div ng-show="!dish.dietSafe" class="btn-group bg-orange open">
                                                                 <a class="btn bg-orange cl-grey" href=""><i class="fa fa-user fa-fw"></i> Qualities</a>
                                                                 <a class="btn bg-orange cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop3=!drop3" href="">
@@ -107,7 +108,7 @@
                                                                     <li ng-show="dish.diet.gmo"><a href=""><i class="fa fa-h-square fa-fw"></i> GMO Free</a></li>
                                                                 </ul>
                                                             </div>
-                                                            <p ng-show="dish.dietSafe" class="v-small">Meets <em>ALL</em>&nbsp Dietary Conditions</p>
+                                                            <!--<p ng-show="dish.dietSafe" class="v-small">Meets <em>ALL</em>&nbsp Dietary Conditions</p>-->
                                                             <div ng-show="dish.dietSafe" class="btn-group open bg-green cl-grey">
                                                                 <a class="btn bg-green cl-grey" href=""><i class="fa fa-user fa-fw"></i> Qualities</a>
                                                                 <a class="btn bg-green cl-grey dropdown-toggle" data-toggle="dropdown" ng-click="drop4=!drop4" href="">
@@ -148,8 +149,11 @@
             <div id="mapPort" class="">
                 <i class="fa fa-angle-double-right fa-2x clickRight" ng-style="keepLeft" ng-click="moveRight={'width': '1%'}; keepLeft={'left': '-7px', 'transform': 'rotate(-180deg)', 'color':'white', 'background\-color':'black'}; makeFull={'width':'96.5%'}" ng-dblclick="moveRight={}; keepLeft={}; makeFull={}"></i>
                 <google-map center="map.center" zoom="map.zoom">
-                    <marker ng-repeat="spot in markers" coords="spot.coords" idkey="spot.id">
-                        <marker-label class="cl-black" content="spot.title" anchor="2 0" class="marker-labels"/>
+                    <marker coords="myMarker.coords" idkey="myMarker.id" ng-hide="true">
+                        <marker-label class="cl-red" content="myMarker.title" anchor="2 0" class="marker-labels" ng-hide="true"/>
+                    </marker>
+                    <marker ng-repeat="spot in markers" coords="spot.coords" idkey="spot.id" ng-hide="true">
+                        <marker-label class="cl-black" content="spot.title" anchor="2 0" class="marker-labels" ng-hide="true"/>
                     </marker>
                 </google-map>
             </div>

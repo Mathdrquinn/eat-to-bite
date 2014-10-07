@@ -6,6 +6,7 @@ html
         link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace')
         link(rel='stylesheet', href='/components/font-awesome/css/font-awesome.css')
         link(rel='stylesheet', href='/css/style.css')
+        meta(name='viewport', content='width=device-width,  height=device-height, initial-scale=1')
     body.no-margin.no-padding.ovrflw-x(ng-app= ngApp )
         .header.absolute-top.wide
             h1.text-muted.inline.no-margin.v-tall.cl-grey.navHeight
@@ -16,7 +17,7 @@ html
                         span.cl-blue-hover to
                         | -
                         span.cl-orange-hover Bite
-            ul.inline-children.text-right.inline.float-right
+            ul.inline-children.text-right.inline.float-right.headerUl
                 li.navButton
                     a(ng-href='#/posts')
                         i.fa.fa-newspaper-o.fa-lg
@@ -25,18 +26,10 @@ html
                     a(ng-href='#/search')
                         i.fa.fa-search.fa-lg
                         span.menuWords &nbsp Search
-                li.navButton(ng-show='!person.created')
+                li.navButton
                     a(ng-href='#/createProfile')
                         i.fa.fa-child.fa-lg
-                        span.menuWords Create Profile
-                li.navButton(ng-show='person.created')
-                    a(ng-href='#/createProfile')
-                        i.fa.fa-pencil-square-o
-                        span.menuWords &nbsp Edit Profile
-                li.navButton(ng-show='person.created')
-                    a(ng-href='#/profile')
-                        i.fa.fa-user.fa-lg
-                        span.menuWords &nbsp View Profile
+                        span.menuWords &nbsp Profile
                 li.navButton
                     a(href='#/menus')
                         i.fa.fa-cutlery.fa-lg

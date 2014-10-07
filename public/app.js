@@ -21,3 +21,10 @@
     });
 
 })();
+
+$(document).ready(function () {
+    $('.navButton').on('click', 'a', function () {
+        $(this).parent().siblings().removeClass('active');
+        $(this).parent().addClass('active');
+    })
+})

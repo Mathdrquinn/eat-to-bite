@@ -11,6 +11,7 @@
             var zoom = menusSvc.zoom;
             var person = menusSvc.person;
             $scope.person = person;
+            console.log($scope.person);
 
             console.log('creating center');
 //            $scope.map = menusSvc.map;
@@ -18,30 +19,20 @@
 
             $scope.map = $scope.person.map;
 
-            var newCenter = {
-                center: {
-                    latitude: parseFloat(lat),
-                    longitude: parseFloat(lng)
+            $scope.myMarker =
+            {
+                id: 0,
+                title: "Your Location",
+                coords: {
+                    latitude: lat,
+                    longitude: lng
                 },
-                zoom: parseFloat(zoom)
+                distance: 0
             };
 
-            $scope.clickRoute = function() {
+            $scope.markers = [];
 
-                $scope.map = newCenter;
-
-            };
-
-            $scope.markers = [
-                {
-                    id:0,
-                    title: "Your Location",
-                    coords: {
-                        latitude: lat,
-                        longitude: lng
-                    }
-                }
-            ];
+            $scope.radius = 20;
 
             menusSvc.getRestaurants().success(function (restaurants) {
                 console.log(restaurants['0']);
@@ -136,7 +127,8 @@
                             coords: {
                                 latitude: obj[prop].lat,
                                 longitude: obj[prop].long
-                            }
+                            },
+                            distance: obj[prop].distance
                         }
                     );
                 }
@@ -151,6 +143,21 @@
                     rest.spoiledTotal += rest.menus[j].spoiledTotal;
                     rest.total += rest.menus[j].total;
                     rest.goodTotal = rest.total - rest.spoiledTotal;
+                    console.log('creating distance');
+                    console.log(lat);
+                    console.log(rest.lat);
+                    rest.difflat = (lat - rest.lat) * 110977.62;
+                    rest.difflng = (lng - rest.long)  * 89011.64;
+                    console.log(rest.difflat);
+                    console.log(rest.difflng);
+                    rest.distance = Math.sqrt(rest.difflat * rest.difflat + rest.difflng * rest.difflng);
+                    console.log('distance meters');
+                    console.log(rest.distance);
+                    console.log('distance miles' + rest.name);
+                    console.log(rest.distance * 0.000621371);
+                    console.log(rest);
+                    rest.distanceMiles = (Math.round(rest.distance * 0.000621371 * 100) / 100)
+
 
                 }
                 return rest;
@@ -271,6 +278,9 @@
                     dietMatches: dietMatches,
                 };
             };
+            console.log('Markers are here');
+
+            console.log($scope.markers);
 
         }]);
 })();

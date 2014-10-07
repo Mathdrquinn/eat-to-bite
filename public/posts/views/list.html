@@ -1,8 +1,8 @@
-<div class="head-padding sit-up wide row">
+<div class="head-padding home-back wide row">
     <p><a href="#/posts/new" class="btn btn-success">Create New Post</a></p>
     <section data-ng-repeat="post in posts | orderBy: predicate : -reverse" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <h2>{{post.restaurant}}</h2>
-        <img style="max-width: 200px" src="{{post.restaurantImage}}" alt="Picture of {{post.restaurant}}"/>
+        <img style="max-width: 200px; height: 100px;" src="{{post.restaurantImage}}" alt="Picture of {{post.restaurant}}"/>
         <p>{{post.dishName}}</p>
         <img style="max-width:300px" src="{{post.dishImage}}" alt="Picture of {{post.dish}}"/>
         <p>{{post.description}}</p>

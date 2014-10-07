@@ -540,7 +540,7 @@ body {
   background-image: url(/images/home-image.jpg);
   background-color: rgbs(0,0,0,1);
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
   min-height: 900px;
 }
 .sit-up {
@@ -717,8 +717,120 @@ input:focus {
 ///////////////////////////////////////////////////////////////// */
 
 /* Small devices (tablets, 768px and up) */
-@media all and (min-width: 500px) {
+@media all and (min-width: 300px) {
 
+}
+
+@media screen and (min-width: 300px) and (max-width : 500px){
+  .header {
+    height: 100px;
+    position: relative;
+    text-align: center;
+    background-color: black;
+    position: relative;
+    h1 {
+      display: block;
+      padding-top: 15px;
+      width: 100%;
+      span {
+        font-size: 30px;
+      }
+    }
+    .headerUl {
+      padding: 0;
+      display: block;
+      width: 100%;
+      text-align: center;
+      .navButton {
+        width: 25%;
+        text-align: center;
+        padding: 15px 30px 15px 30px;
+        .menuWords {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .head-padding {
+    padding-top: 0px;
+  }
+
+  .formTop {
+    padding-left: 25%;
+    margin: 0 auto 0 auto;
+    .input-group {
+      .form-control {
+        display: block;
+        width: 149px;
+      }
+      input {
+
+      }
+    }
+  }
+  .formBottom {
+    text-align: center;
+  }
+  .formAllergens {
+    text-align: center;
+  }
+  .formDiet {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width : 690px){
+  .header {
+    h1 {
+      padding-top: 15px;
+      width: 30%;
+      span {
+        font-size: 30px;
+      }
+    }
+    text-align: center;
+    background-color: black;
+    position: relative;
+    height:50px;
+    .headerUl {
+      width: 70%;
+      .navButton {
+        width: 25%;
+        text-align: center;
+        padding: 15px 30px 15px 30px;
+        .menuWords {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .head-padding {
+    padding-top: 0px;
+  }
+
+  .formTop {
+    padding-left: 30%;
+    margin: 0 auto 0 auto;
+    .input-group {
+      .form-control {
+        display: block;
+      }
+      input {
+
+      }
+    }
+  }
+  .formBottom {
+    text-align: center;
+  }
+  .formAllergens {
+    text-align: center;
+  }
+  .formDiet {
+    text-align: center;
+  }
 }
 
 @media all and (min-width: 768px) {
