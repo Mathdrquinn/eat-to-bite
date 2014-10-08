@@ -710,6 +710,20 @@ input:focus {
   magin:0;
 }
 
+.selectLeft, .selectRight {
+  min-width: 205px;
+  text-align: left;
+  input {
+    margin: 0;
+  }
+}
+
+.postList {
+  h5 {
+    height: 80px;
+  }
+}
+
 
 
 
@@ -722,15 +736,17 @@ input:focus {
 }
 
 @media screen and (min-width: 300px) and (max-width : 500px){
+  .container {
+    padding-top: 105px;
+  }
   .header {
     height: 100px;
-    position: relative;
+    position: fixed;
     text-align: center;
     background-color: black;
-    position: relative;
     h1 {
       display: block;
-      padding-top: 15px;
+      padding-top: 5px;
       width: 100%;
       span {
         font-size: 30px;
@@ -741,6 +757,7 @@ input:focus {
       display: block;
       width: 100%;
       text-align: center;
+      margin-bottom:0;
       .navButton {
         width: 25%;
         text-align: center;

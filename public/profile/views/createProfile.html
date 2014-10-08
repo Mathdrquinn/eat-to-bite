@@ -50,35 +50,53 @@
             <div class="formAllergens col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left lg-margin-top">
                 <label> Allergies
                     <hr/>
-                    <input type="checkbox" name="nuts" id="nuts" data-ng-model="person.allergens.nuts"/> Nuts
-                    <input type="checkbox" name="treeNuts" id="treeNuts" data-ng-model="person.allergens.treeNuts"/> Tree Nuts
-                    <input type="checkbox" name="milk" id="milk" data-ng-model="person.allergens.milk"/> Milk
-                    <input type="checkbox" name="lactose" id="dairy" data-ng-model="person.allergens.dairy"/> Dairy
-                    <br/>
-                    <input type="checkbox" name="glucose" id="glucose" data-ng-model="person.allergens.glucose"/> Wheat/Glucose
-                    <input type="checkbox" name="eggs" id="eggs" data-ng-model="person.allergens.eggs"/> Eggs
-                    <input type="checkbox" name="fish" id="fish" data-ng-model="person.allergens.fish"/> Fish
-                    <br/>
-                    <input type="checkbox" name="shellfish" id="shellfish" data-ng-model="person.allergens.shellfish"/> Shellfish
-                    <input type="checkbox" name="soy" id="soy" data-ng-model="person.allergens.soy"/> Soy
+                    <div class="selectLeft col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <input type="checkbox" name="nuts" id="nuts" data-ng-model="person.allergens.nuts"/> Nuts
+                        <br/>
+                        <input type="checkbox" name="treeNuts" id="treeNuts" data-ng-model="person.allergens.treeNuts"/> Tree Nuts
+                        <br/>
+                        <input type="checkbox" name="milk" id="milk" data-ng-model="person.allergens.milk"/> Milk
+                        <br/>
+                        <input type="checkbox" name="lactose" id="dairy" data-ng-model="person.allergens.dairy"/> Dairy
+                        <br/>
+                        <input type="checkbox" name="glucose" id="glucose" data-ng-model="person.allergens.glucose"/> Glucose
+                    </div>
+                    <div class="selectRight col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <input type="checkbox" name="eggs" id="eggs" data-ng-model="person.allergens.eggs"/> Eggs
+                        <br/>
+                        <input type="checkbox" name="fish" id="fish" data-ng-model="person.allergens.fish"/> Fish
+                        <br/>
+                        <input type="checkbox" name="shellfish" id="shellfish" data-ng-model="person.allergens.shellfish"/> Shellfish
+                        <br/>
+                        <input type="checkbox" name="soy" id="soy" data-ng-model="person.allergens.soy"/> Soy
+                    </div>
                 </label>
             </div>
             <div class="formDiet col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left lg-margin-top">
                 <label> Dietary Needs
                     <hr/>
-                    <input type="checkbox" name="veagan" id="veagan" data-ng-model="person.diet.veagan"/> Veagan
-                    <input type="checkbox" name="geggie" id="veggie" data-ng-model="person.diet.veggie"/> Vegetarian
-                    <input type="checkbox" name="pescatarian" id="pescatarian" data-ng-model="person.diet.pescatarian"/> Pescatarian
-                    <br/>
-                    <input type="checkbox" name="polloPesca" id="polloPesca" data-ng-model="person.diet.polloPesca"/>Pollo-pescetarian
-                    <input type="checkbox" name="carbFre" id="carbFree" data-ng-model="person.diet.carbFree"/> Carb Free
-                    <input type="checkbox" name="carb" id="carb" data-ng-model="person.diet.carb"/> Low Carb
-                    <br/>
-                    <input type="checkbox" name="protein" id="protein" data-ng-model="person.diet.protein"/> High Protein
-                    <input type="checkbox" name="highFructose" id="highFructose" data-ng-model="person.diet.highFructose"/> Contains No High Fructose Corn Syrup
-                    <br/>
-                    <input type="checkbox" name="organic" id="organic" data-ng-model="person.diet.organic"/> Organic
-                    <input type="checkbox" name="gmo" id="gmo" data-ng-model="person.diet.gmo"/> Free of GMOs
+                    <div class="selectLeft col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <input type="checkbox" name="veagan" id="veagan" data-ng-model="person.diet.veagan"/> Veagan
+                        <br/>
+                        <input type="checkbox" name="geggie" id="veggie" data-ng-model="person.diet.veggie"/> Vegetarian
+                        <br/>
+                        <input type="checkbox" name="pescatarian" id="pescatarian" data-ng-model="person.diet.pescatarian"/> Pescatarian
+                        <br/>
+                        <input type="checkbox" name="polloPesca" id="polloPesca" data-ng-model="person.diet.polloPesca"/>Pollo-pescetarian
+                        <br/>
+                        <input type="checkbox" name="carbFre" id="carbFree" data-ng-model="person.diet.carbFree"/> Carb Free
+                    </div>
+                    <div class="selectRight col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <input type="checkbox" name="carb" id="carb" data-ng-model="person.diet.carb"/> Low Carb
+                        <br/>
+                        <input type="checkbox" name="protein" id="protein" data-ng-model="person.diet.protein"/> High Protein
+                        <br/>
+                        <input type="checkbox" name="highFructose" id="highFructose" data-ng-model="person.diet.highFructose"/> No High Fructose Corn Syrup
+                        <br/>
+                        <input type="checkbox" name="organic" id="organic" data-ng-model="person.diet.organic"/> Organic
+                        <br/>
+                        <input type="checkbox" name="gmo" id="gmo" data-ng-model="person.diet.gmo"/> Free of GMOs
+                    </div>
                 </label>
             </div>
         </div>
